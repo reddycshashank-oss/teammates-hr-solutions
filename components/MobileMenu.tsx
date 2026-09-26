@@ -28,12 +28,9 @@ export default function MobileMenu({
       id="mobile-navigation"
       className="fixed inset-0 z-[100] bg-[#FDFDFD] lg:hidden"
     >
-      {/* =====================================================
-          TOP BAR
-      ====================================================== */}
-      <div className="flex h-[68px] items-center justify-between border-b border-[#A4A9A5]/40 px-4 sm:px-6">
-
-        {/* LOGO */}
+      {/* Mobile Header */}
+      <div className="flex h-[68px] items-center justify-between bg-[#6D7E5A] px-4 sm:px-6">
+        {/* Logo */}
         <Link
           href="/"
           onClick={onClose}
@@ -47,26 +44,21 @@ export default function MobileMenu({
           />
         </Link>
 
-        {/* CLOSE BUTTON */}
+        {/* Close Button */}
         <button
           type="button"
           onClick={onClose}
           aria-label="Close navigation menu"
-          className="flex h-[40px] w-[40px] shrink-0 items-center justify-center border border-[#A4A9A5] text-[24px] font-light leading-none text-[#111111] transition-colors duration-200 hover:border-[#6D7E5A] hover:bg-[#6D7E5A] hover:text-[#FFFFFF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6D7E5A] focus-visible:ring-offset-2"
+          className="flex h-[40px] w-[40px] shrink-0 items-center justify-center border border-white/70 text-[24px] font-light leading-none text-white transition-colors duration-200 hover:border-white hover:bg-white hover:text-[#6D7E5A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#6D7E5A]"
         >
           ×
         </button>
       </div>
 
-      {/* =====================================================
-          MENU CONTENT
-      ====================================================== */}
+      {/* Navigation Content */}
       <div className="h-[calc(100vh-68px)] overflow-y-auto px-4 py-7 sm:px-6">
         <nav aria-label="Mobile navigation">
-
-          {/* =================================================
-              NAVIGATION LINKS
-          ================================================== */}
+          {/* Navigation Links */}
           <div className="border-t border-[#A4A9A5]/40">
             {navigation.map((item) => (
               <Link
@@ -89,32 +81,29 @@ export default function MobileMenu({
             ))}
           </div>
 
-          {/* =================================================
-              CTA BUTTONS
-          ================================================== */}
+          {/* CTA Buttons */}
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
-
-            {/* FIND JOBS */}
+            {/* Find Jobs */}
             <Link
               href="/jobs"
               onClick={onClose}
-              className="group flex h-[52px] items-center justify-center gap-3 rounded-full bg-[#6D7E5A] px-6 text-[13px] font-semibold tracking-[-0.01em] text-[#FFFFFF] transition-colors duration-200 hover:bg-[#38472A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6D7E5A] focus-visible:ring-offset-2"
+              className="group flex h-[52px] items-center justify-center gap-3 rounded-full bg-[#6D7E5A] px-6 text-[13px] font-semibold tracking-[-0.01em] text-white transition-colors duration-200 hover:bg-[#38472A] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6D7E5A] focus-visible:ring-offset-2"
             >
-              <span>Find Jobs</span>
+              <span className="text-white">Find Jobs</span>
 
               <span
                 aria-hidden="true"
-                className="transition-transform duration-200 group-hover:translate-x-1"
+                className="text-white transition-transform duration-200 group-hover:translate-x-1"
               >
                 →
               </span>
             </Link>
 
-            {/* CONTACT US */}
+            {/* Contact Us */}
             <Link
               href="/contact-us"
               onClick={onClose}
-              className="group flex h-[52px] items-center justify-center gap-3 rounded-full border border-[#6D7E5A] bg-[#FFFFFF] px-6 text-[13px] font-semibold tracking-[-0.01em] text-[#6D7E5A] transition-colors duration-200 hover:bg-[#6D7E5A] hover:text-[#FFFFFF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6D7E5A] focus-visible:ring-offset-2"
+              className="group flex h-[52px] items-center justify-center gap-3 rounded-full border border-[#6D7E5A] bg-white px-6 text-[13px] font-semibold tracking-[-0.01em] text-[#6D7E5A] transition-colors duration-200 hover:bg-[#6D7E5A] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6D7E5A] focus-visible:ring-offset-2"
             >
               <span>Contact Us</span>
 
@@ -125,19 +114,15 @@ export default function MobileMenu({
                 →
               </span>
             </Link>
-
           </div>
 
-          {/* =================================================
-              SUPPORTING BRAND MESSAGE
-          ================================================== */}
+          {/* Description */}
           <div className="mt-10 border-t border-[#A4A9A5]/40 pt-6">
-            <p className="max-w-[340px] text-[14px] leading-7 text-[#A4A9A5]">
+            <p className="max-w-[340px] text-[14px] leading-7 text-[#6F746F]">
               Connecting people with opportunities and helping businesses
               build stronger teams.
             </p>
           </div>
-
         </nav>
       </div>
     </div>
