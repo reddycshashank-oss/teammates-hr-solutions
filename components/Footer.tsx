@@ -160,7 +160,7 @@ export default function Footer() {
               className="inline-flex items-center"
             >
               <Image
-                src="/images/teammates_hr_solution_logo.png"
+                src="/images/teammates_hr_solutions_logo.png"
                 alt="TeamMates HR Solutions"
                 width={190}
                 height={60}
