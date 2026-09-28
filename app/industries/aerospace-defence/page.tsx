@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Button from "@/components/Button";
-import Footer from "@/components/Footer";
 
 export const metadata = {
   title:
@@ -75,18 +74,27 @@ const employerServices = [
   },
 ];
 
-const candidateReasons = [
-  "Access to relevant aerospace and defence opportunities",
-  "Opportunities across technical and non-technical functions",
-  "Clear communication throughout the recruitment process",
-  "Support based on your skills, qualifications and career direction",
-];
-
-const employerReasons = [
-  "Relevant technical and operational talent",
-  "Understanding of manufacturing and engineering functions",
-  "Responsive recruitment support",
-  "People-focused hiring approach",
+const commonReasons = [
+  {
+    title: "Relevant Opportunities & Talent",
+    description:
+      "We connect candidates with relevant aerospace and defence opportunities and employers with suitable technical and operational talent.",
+  },
+  {
+    title: "Industry Understanding",
+    description:
+      "Our recruitment approach considers engineering, manufacturing, quality, maintenance, supply chain and operational functions.",
+  },
+  {
+    title: "Responsive Support",
+    description:
+      "We focus on clear communication and timely coordination throughout the recruitment journey.",
+  },
+  {
+    title: "People-Focused Approach",
+    description:
+      "We believe recruitment works best when candidate skills and employer requirements are understood clearly.",
+  },
 ];
 
 const process = [
@@ -118,7 +126,8 @@ const process = [
 
 const faqs = [
   {
-    question: "What types of aerospace and defence roles does TeamMates support?",
+    question:
+      "What types of aerospace and defence roles does TeamMates support?",
     answer:
       "TeamMates supports opportunities across engineering, technical functions, production, manufacturing, quality, maintenance, supply chain, procurement, operations and other related roles.",
   },
@@ -128,17 +137,20 @@ const faqs = [
       "Yes. Candidates can explore current opportunities and apply for suitable roles based on their qualifications, skills and experience.",
   },
   {
-    question: "Does TeamMates provide staffing services for aerospace and defence companies?",
+    question:
+      "Does TeamMates provide staffing services for aerospace and defence companies?",
     answer:
       "Yes. TeamMates supports employers with permanent recruitment, contract staffing, volume hiring and NAPS / apprenticeship support.",
   },
   {
-    question: "Can manufacturing and engineering companies hire through TeamMates?",
+    question:
+      "Can manufacturing and engineering companies hire through TeamMates?",
     answer:
       "Yes. Employers can share their hiring requirements with TeamMates for recruitment and staffing support.",
   },
   {
-    question: "Does TeamMates support freshers and early-career candidates?",
+    question:
+      "Does TeamMates support freshers and early-career candidates?",
     answer:
       "TeamMates supports candidates at different career stages, including freshers and early-career professionals, depending on available opportunities.",
   },
@@ -147,22 +159,24 @@ const faqs = [
 export default function AerospaceDefencePage() {
   return (
     <main className="bg-[#FDFDFD]">
-      {/* Hero */}
+      {/* =========================================================
+          HERO
+      ========================================================== */}
       <section className="bg-[#FDFDFD]">
-        <div className="mx-auto grid min-h-[620px] max-w-[1280px] items-center gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:px-8 lg:py-24">
+        <div className="mx-auto grid min-h-[620px] max-w-[1280px] items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:gap-14 lg:px-8 lg:py-24">
           <div>
             <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
               Aerospace & Defence
             </p>
 
-            <h1 className="mt-5 max-w-[720px] !text-[#545A5B] text-[48px] font-extrabold leading-[1.02] tracking-[-0.045em] sm:text-[62px] lg:text-[78px]">
+            <h1 className="mt-5 max-w-[650px] !text-[#545A5B] text-[42px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[52px] lg:text-[px]">
               Connecting skilled people with{" "}
               <span className="!text-[#6D7E5A]">
                 aerospace & defence opportunities.
               </span>
             </h1>
 
-            <p className="mt-7 max-w-[650px] !text-[#6F746F] text-[16px] leading-7 sm:text-[18px] sm:leading-8">
+            <p className="mt-7 max-w-[640px] !text-[#6F746F] text-[16px] leading-7 sm:text-[18px] sm:leading-8">
               Whether you are looking for your next engineering, manufacturing
               or operations opportunity or building a capable workforce,
               TeamMates connects candidates and employers through focused
@@ -193,28 +207,30 @@ export default function AerospaceDefencePage() {
         </div>
       </section>
 
-      {/* Industry Introduction */}
+      {/* =========================================================
+          INDUSTRY RECRUITMENT
+      ========================================================== */}
       <section className="bg-[#C1C3AC]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start lg:gap-20">
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
                 Industry Recruitment
               </p>
 
-              <h2 className="mt-4 !text-white text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px] lg:text-[60px]">
+              <h2 className="mt-4 max-w-[620px] !text-white text-[42px] font-extrabold leading-[1.02] tracking-[-0.045em] sm:text-[52px] lg:text-[64px]">
                 Connecting talent with aerospace and defence opportunities.
               </h2>
             </div>
 
-            <div>
-              <p className="!text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
+            <div className="pt-1 lg:pt-12">
+              <p className="max-w-[720px] !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
                 Aerospace and defence organisations rely on skilled
                 professionals across engineering, manufacturing, quality,
                 maintenance, supply chain and operational functions.
               </p>
 
-              <p className="mt-5 !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
+              <p className="mt-5 max-w-[720px] !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
                 TeamMates supports both candidates and employers by creating
                 relevant connections between skills, career opportunities and
                 workforce requirements.
@@ -224,7 +240,9 @@ export default function AerospaceDefencePage() {
         </div>
       </section>
 
-      {/* Candidates */}
+      {/* =========================================================
+          FOR CANDIDATES
+      ========================================================== */}
       <section className="bg-[#FFFFFF]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
@@ -270,7 +288,9 @@ export default function AerospaceDefencePage() {
         </div>
       </section>
 
-      {/* Employers */}
+      {/* =========================================================
+          FOR EMPLOYERS
+      ========================================================== */}
       <section className="bg-[#C1C3AC]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
@@ -316,90 +336,59 @@ export default function AerospaceDefencePage() {
         </div>
       </section>
 
-      {/* Why Candidates */}
+      {/* =========================================================
+          WHY TEAMMATES
+      ========================================================== */}
       <section className="bg-[#FFFFFF]">
-        <div className="mx-auto grid max-w-[1280px] gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:items-center lg:px-8 lg:py-24">
-          <div className="relative overflow-hidden rounded-[16px]">
-            <Image
-              src="/images/industries/aerospace-defence-team.jpg"
-              alt="Aerospace and defence team collaborating at work"
-              width={900}
-              height={700}
-              className="h-[420px] w-full object-cover sm:h-[520px]"
-            />
-          </div>
+        <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+          <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
+                Why TeamMates
+              </p>
 
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-              For Professionals
-            </p>
+              <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
+                Recruitment support built around people.
+              </h2>
 
-            <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
-              Support throughout your career journey.
-            </h2>
+              <p className="mt-6 max-w-[520px] !text-[#6F746F] text-[16px] leading-7 sm:text-[18px] sm:leading-8">
+                Whether you are looking for an opportunity or building an
+                aerospace and defence team, our approach focuses on relevant
+                connections, clear communication and practical recruitment
+                support.
+              </p>
+            </div>
 
-            <p className="mt-6 !text-[#6F746F] text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-              Finding the right opportunity is about more than a job title. We
-              focus on understanding your skills, qualifications, experience
-              and career direction.
-            </p>
-
-            <div className="mt-8 space-y-4">
-              {candidateReasons.map((reason) => (
-                <div
-                  key={reason}
-                  className="flex items-start gap-4 border-b border-[#DFE2DF] pb-4"
+            <div className="grid gap-4 sm:grid-cols-2">
+              {commonReasons.map((reason) => (
+                <article
+                  key={reason.title}
+                  className="rounded-[16px] border border-[#DFE2DF] bg-[#FDFDFD] p-6 sm:p-7"
                 >
-                  <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#6D7E5A] text-[12px] font-bold !text-white">
-                    ✓
-                  </span>
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#6D7E5A]">
+                    <span className="text-[13px] font-bold !text-white">
+                      ✓
+                    </span>
+                  </div>
 
-                  <p className="!text-[#545A5B] text-[15px] font-semibold leading-6">
-                    {reason}
+                  <h3 className="mt-5 !text-[#545A5B] text-[21px] font-bold leading-tight">
+                    {reason.title}
+                  </h3>
+
+                  <p className="mt-3 !text-[#6F746F] text-[14px] leading-7">
+                    {reason.description}
                   </p>
-                </div>
+                </article>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Employers */}
+      {/* =========================================================
+          HOW WE WORK
+      ========================================================== */}
       <section className="bg-[#C1C3AC]">
-        <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <div className="mx-auto max-w-[850px] text-center">
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-              For Employers
-            </p>
-
-            <h2 className="mt-4 !text-white text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
-              Recruitment support built around your workforce.
-            </h2>
-
-            <p className="mt-6 !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-              We work with employers to understand their requirements before
-              connecting them with relevant engineering, manufacturing and
-              operational talent.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {employerReasons.map((reason) => (
-              <article
-                key={reason}
-                className="rounded-[16px] border border-[#DFE2DF] bg-[#FFFFFF] p-6 sm:p-7"
-              >
-                <p className="!text-[#545A5B] text-[18px] font-bold leading-7">
-                  {reason}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How We Work */}
-      <section className="bg-[#FFFFFF]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
             <div>
@@ -407,11 +396,11 @@ export default function AerospaceDefencePage() {
                 How We Work
               </p>
 
-              <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
+              <h2 className="mt-4 !text-white text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
                 A straightforward recruitment journey.
               </h2>
 
-              <p className="mt-6 !text-[#6F746F] text-[16px] leading-7 sm:text-[18px] sm:leading-8">
+              <p className="mt-6 max-w-[520px] !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
                 Whether you are a candidate or an employer, our approach
                 focuses on understanding first, followed by relevant
                 connections and consistent support.
@@ -422,7 +411,7 @@ export default function AerospaceDefencePage() {
               {process.map((item) => (
                 <article
                   key={item.number}
-                  className="rounded-[16px] border border-[#DFE2DF] bg-[#FDFDFD] p-6 sm:p-7"
+                  className="rounded-[16px] border border-[#DFE2DF] bg-[#FFFFFF] p-6 sm:p-7"
                 >
                   <p className="text-[12px] font-bold tracking-[0.12em] !text-[#6D7E5A]">
                     {item.number}
@@ -442,68 +431,17 @@ export default function AerospaceDefencePage() {
         </div>
       </section>
 
-      {/* Current Opportunities */}
-      <section className="bg-[#C1C3AC]">
-        <div className="mx-auto grid max-w-[1280px] gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8 lg:py-24">
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-              Current Opportunities
-            </p>
-
-            <h2 className="mt-4 !text-white text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
-              Explore current aerospace & defence opportunities.
-            </h2>
-
-            <p className="mt-5 max-w-[700px] !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-              Browse available roles and find opportunities that match your
-              skills, qualifications and career direction.
-            </p>
-          </div>
-
-          <Button href="/jobs" variant="primary">
-            View Jobs
-          </Button>
-        </div>
-      </section>
-
-      {/* Hiring Requirement */}
+      {/* =========================================================
+          FAQ
+      ========================================================== */}
       <section className="bg-[#FFFFFF]">
-        <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <div className="w-full rounded-[16px] bg-[#FDFDFD] p-8 sm:p-10 lg:p-14">
-            <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-                  Hiring Requirement
-                </p>
-
-                <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
-                  Looking for aerospace & defence talent?
-                </h2>
-
-                <p className="mt-5 max-w-[700px] !text-[#6F746F] text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-                  Share your requirement with TeamMates and our recruitment
-                  team can help you connect with relevant engineering,
-                  manufacturing, technical and operational professionals.
-                </p>
-              </div>
-
-              <Button href="/for-employers" variant="primary">
-                Share Hiring Requirement
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="bg-[#C1C3AC]">
         <div className="mx-auto max-w-[1000px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="text-center">
             <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
               FAQ
             </p>
 
-            <h2 className="mt-4 !text-white text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
+            <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
               Aerospace & defence recruitment questions.
             </h2>
           </div>
@@ -512,7 +450,7 @@ export default function AerospaceDefencePage() {
             {faqs.map((faq) => (
               <details
                 key={faq.question}
-                className="group rounded-[16px] border border-[#DFE2DF] bg-[#FFFFFF] p-6 sm:p-7"
+                className="group rounded-[16px] border border-[#DFE2DF] bg-[#FDFDFD] p-6 sm:p-7"
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-6 !text-[#545A5B] text-[18px] font-bold leading-7">
                   <span>{faq.question}</span>
@@ -534,38 +472,86 @@ export default function AerospaceDefencePage() {
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* =========================================================
+          FINAL COMBINED CTA
+      ========================================================== */}
       <section className="bg-[#FFFFFF]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <div className="w-full rounded-[16px] bg-[#C1C3AC] px-6 py-14 text-center sm:px-10 sm:py-16 lg:px-16 lg:py-20">
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-              Aerospace & Defence
-            </p>
+          <div className="w-full rounded-[16px] bg-[#C1C3AC] px-5 py-14 sm:px-10 sm:py-16 lg:px-16 lg:py-20">
 
-            <h2 className="mx-auto mt-5 max-w-[850px] !text-white text-[38px] font-extrabold leading-[1.03] tracking-[-0.04em] sm:text-[50px] lg:text-[62px]">
-              The right people can help your business{" "}
-              <span className="!text-[#6D7E5A]">move forward.</span>
-            </h2>
+            {/* CTA INTRO */}
+            <div className="mx-auto max-w-[1050px] text-center">
+              <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
+                Aerospace & Defence
+              </p>
 
-            <p className="mx-auto mt-6 max-w-[700px] !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-              Explore aerospace and defence opportunities as a candidate or
-              connect with TeamMates for your workforce requirements.
-            </p>
+              <h2 className="mx-auto mt-5 max-w-[1000px] !text-white text-[38px] font-extrabold leading-[1.04] tracking-[-0.045em] sm:text-[50px] lg:text-[60px]">
+                The right people can help your business{" "}
+                <span className="!text-[#6D7E5A]">
+                  move forward.
+                </span>
+              </h2>
 
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <Button href="/jobs" variant="primary">
-                Find Jobs
-              </Button>
+              <p className="mx-auto mt-6 max-w-[760px] !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
+                Whether you are looking for your next aerospace and defence
+                opportunity or building a capable workforce, TeamMates can
+                help you take the next step.
+              </p>
+            </div>
 
-              <Button href="/for-employers" variant="primary">
-                Hire Talent
-              </Button>
+            {/* CTA CARDS */}
+            <div className="mx-auto mt-10 grid max-w-[1000px] items-stretch gap-5 md:grid-cols-2">
+
+              {/* CANDIDATES */}
+              <div className="flex h-full flex-col rounded-[16px] bg-white p-7 text-left sm:p-8">
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em] !text-[#6D7E5A]">
+                  For Candidates
+                </p>
+
+                <h3 className="mt-3 min-h-[72px] !text-[#545A5B] text-[27px] font-bold leading-[1.12] tracking-[-0.025em] sm:text-[30px]">
+                  Find your next aerospace & defence opportunity.
+                </h3>
+
+                <p className="mt-4 max-w-[430px] !text-[#6F746F] text-[15px] leading-7">
+                  Explore opportunities across engineering, manufacturing,
+                  quality, maintenance, supply chain and other industry
+                  functions.
+                </p>
+
+                <div className="mt-auto pt-7">
+                  <Button href="/jobs" variant="primary">
+                    Find Jobs
+                  </Button>
+                </div>
+              </div>
+
+              {/* EMPLOYERS */}
+              <div className="flex h-full flex-col rounded-[16px] bg-white p-7 text-left sm:p-8">
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em] !text-[#6D7E5A]">
+                  For Employers
+                </p>
+
+                <h3 className="mt-3 min-h-[72px] !text-[#545A5B] text-[27px] font-bold leading-[1.12] tracking-[-0.025em] sm:text-[30px]">
+                  Build your aerospace & defence team.
+                </h3>
+
+                <p className="mt-4 max-w-[430px] !text-[#6F746F] text-[15px] leading-7">
+                  Share your workforce requirement and connect with relevant
+                  engineering, manufacturing, technical and operational
+                  talent.
+                </p>
+
+                <div className="mt-auto pt-7">
+                  <Button href="/for-employers" variant="primary">
+                    Hire Talent
+                  </Button>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

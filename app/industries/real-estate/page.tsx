@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Button from "@/components/Button";
-import Footer from "@/components/Footer";
 
 export const metadata = {
   title:
@@ -75,18 +74,27 @@ const employerServices = [
   },
 ];
 
-const candidateReasons = [
-  "Access to relevant real estate opportunities",
-  "Opportunities across sales, operations and support functions",
-  "Clear communication throughout the recruitment process",
-  "Support based on your skills, qualifications and career direction",
-];
-
-const employerReasons = [
-  "Relevant real estate and operational talent",
-  "Understanding of sales, property and project functions",
-  "Responsive recruitment support",
-  "People-focused hiring approach",
+const reasons = [
+  {
+    title: "Relevant Opportunities & Talent",
+    description:
+      "Connect candidates with suitable real estate opportunities and employers with relevant real estate and operational professionals.",
+  },
+  {
+    title: "Industry Understanding",
+    description:
+      "Understand sales, property management, construction, project and operational functions.",
+  },
+  {
+    title: "Responsive Support",
+    description:
+      "Clear communication and coordination throughout the recruitment journey.",
+  },
+  {
+    title: "People-Focused Approach",
+    description:
+      "A recruitment approach that considers skills, qualifications, experience, requirements and career direction.",
+  },
 ];
 
 const process = [
@@ -147,15 +155,19 @@ const faqs = [
 export default function RealEstatePage() {
   return (
     <main className="bg-[#FDFDFD]">
-      {/* Hero */}
+
+      {/* =========================================================
+          HERO
+      ========================================================= */}
       <section className="bg-[#FDFDFD]">
         <div className="mx-auto grid min-h-[620px] max-w-[1280px] items-center gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:px-8 lg:py-24">
+
           <div>
             <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
               Real Estate
             </p>
 
-            <h1 className="mt-5 max-w-[720px] !text-[#545A5B] text-[48px] font-extrabold leading-[1.02] tracking-[-0.045em] sm:text-[62px] lg:text-[78px]">
+            <h1 className="mt-5 max-w-[620px] !text-[#545A5B] text-[38px] font-extrabold leading-[1.08] tracking-[-0.035em] sm:text-[46px] lg:text-[52px]">
               Connecting real estate talent with{" "}
               <span className="!text-[#6D7E5A]">
                 growing opportunities.
@@ -189,13 +201,18 @@ export default function RealEstatePage() {
               priority
             />
           </div>
+
         </div>
       </section>
 
-      {/* Industry Introduction */}
+      {/* =========================================================
+          INDUSTRY RECRUITMENT
+      ========================================================= */}
       <section className="bg-[#C1C3AC]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
                 Industry Recruitment
@@ -219,14 +236,20 @@ export default function RealEstatePage() {
                 workforce requirements.
               </p>
             </div>
+
           </div>
+
         </div>
       </section>
 
-      {/* Candidates */}
+      {/* =========================================================
+          FOR CANDIDATES
+      ========================================================= */}
       <section className="bg-[#FFFFFF]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
+
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
                 For Candidates
@@ -265,14 +288,20 @@ export default function RealEstatePage() {
                 </article>
               ))}
             </div>
+
           </div>
+
         </div>
       </section>
 
-      {/* Employers */}
+      {/* =========================================================
+          FOR EMPLOYERS
+      ========================================================= */}
       <section className="bg-[#C1C3AC]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
+
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
                 For Employers
@@ -311,106 +340,76 @@ export default function RealEstatePage() {
                 </article>
               ))}
             </div>
+
           </div>
+
         </div>
       </section>
 
-      {/* Why Candidates */}
+      {/* =========================================================
+          WHY TEAMMATES
+      ========================================================= */}
       <section className="bg-[#FFFFFF]">
-        <div className="mx-auto grid max-w-[1280px] gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:items-center lg:px-8 lg:py-24">
-          <div className="relative overflow-hidden rounded-[16px]">
-            <Image
-              src="/images/industries/real-estate-team.jpg"
-              alt="Real estate team collaborating at work"
-              width={900}
-              height={700}
-              className="h-[420px] w-full object-cover sm:h-[520px]"
-            />
-          </div>
+        <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-              For Professionals
-            </p>
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
 
-            <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
-              Support throughout your career journey.
-            </h2>
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
+                Why TeamMates
+              </p>
 
-            <p className="mt-6 !text-[#6F746F] text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-              Finding the right opportunity is about more than a job title. We
-              focus on understanding your skills, qualifications, experience
-              and career direction.
-            </p>
+              <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
+                Recruitment support built around people and requirements.
+              </h2>
 
-            <div className="mt-8 space-y-4">
-              {candidateReasons.map((reason) => (
-                <div
-                  key={reason}
-                  className="flex items-start gap-4 border-b border-[#DFE2DF] pb-4"
+              <p className="mt-6 max-w-[520px] !text-[#6F746F] text-[16px] leading-7 sm:text-[18px] sm:leading-8">
+                Whether you are building a real estate workforce or looking
+                for your next opportunity, our approach focuses on relevance,
+                communication and practical recruitment support.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {reasons.map((reason) => (
+                <article
+                  key={reason.title}
+                  className="rounded-[16px] border border-[#DFE2DF] bg-[#FDFDFD] p-6 sm:p-7"
                 >
-                  <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#6D7E5A] text-[12px] font-bold !text-white">
-                    ✓
-                  </span>
+                  <h3 className="!text-[#545A5B] text-[22px] font-bold leading-tight">
+                    {reason.title}
+                  </h3>
 
-                  <p className="!text-[#545A5B] text-[15px] font-semibold leading-6">
-                    {reason}
+                  <p className="mt-4 !text-[#6F746F] text-[15px] leading-7">
+                    {reason.description}
                   </p>
-                </div>
+                </article>
               ))}
             </div>
+
           </div>
+
         </div>
       </section>
 
-      {/* Why Employers */}
+      {/* =========================================================
+          HOW WE WORK
+      ========================================================= */}
       <section className="bg-[#C1C3AC]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <div className="mx-auto max-w-[850px] text-center">
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-              For Employers
-            </p>
 
-            <h2 className="mt-4 !text-white text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
-              Recruitment support built around your workforce.
-            </h2>
-
-            <p className="mt-6 !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-              We work with employers to understand their requirements before
-              connecting them with relevant sales, property, construction and
-              operational talent.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {employerReasons.map((reason) => (
-              <article
-                key={reason}
-                className="rounded-[16px] border border-[#DFE2DF] bg-[#FFFFFF] p-6 sm:p-7"
-              >
-                <p className="!text-[#545A5B] text-[18px] font-bold leading-7">
-                  {reason}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How We Work */}
-      <section className="bg-[#FFFFFF]">
-        <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
+
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
                 How We Work
               </p>
 
-              <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
+              <h2 className="mt-4 !text-white text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
                 A straightforward recruitment journey.
               </h2>
 
-              <p className="mt-6 !text-[#6F746F] text-[16px] leading-7 sm:text-[18px] sm:leading-8">
+              <p className="mt-6 max-w-[520px] !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
                 Whether you are a candidate or an employer, our approach
                 focuses on understanding first, followed by relevant
                 connections and consistent support.
@@ -437,72 +436,24 @@ export default function RealEstatePage() {
                 </article>
               ))}
             </div>
+
           </div>
+
         </div>
       </section>
 
-      {/* Current Opportunities */}
-      <section className="bg-[#C1C3AC]">
-        <div className="mx-auto grid max-w-[1280px] gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8 lg:py-24">
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-              Current Opportunities
-            </p>
-
-            <h2 className="mt-4 !text-white text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
-              Explore current real estate opportunities.
-            </h2>
-
-            <p className="mt-5 max-w-[700px] !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-              Browse available roles and find opportunities that match your
-              skills, qualifications and career direction.
-            </p>
-          </div>
-
-          <Button href="/jobs" variant="primary">
-            View Jobs
-          </Button>
-        </div>
-      </section>
-
-      {/* Hiring Requirement */}
+      {/* =========================================================
+          FAQ
+      ========================================================= */}
       <section className="bg-[#FFFFFF]">
-        <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <div className="w-full rounded-[16px] bg-[#FDFDFD] p-8 sm:p-10 lg:p-14">
-            <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-                  Hiring Requirement
-                </p>
-
-                <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
-                  Looking for real estate talent?
-                </h2>
-
-                <p className="mt-5 max-w-[700px] !text-[#6F746F] text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-                  Share your requirement with TeamMates and our recruitment
-                  team can help you connect with relevant sales, property,
-                  construction, operations and support professionals.
-                </p>
-              </div>
-
-              <Button href="/for-employers" variant="primary">
-                Share Hiring Requirement
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="bg-[#C1C3AC]">
         <div className="mx-auto max-w-[1000px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+
           <div className="text-center">
             <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
               FAQ
             </p>
 
-            <h2 className="mt-4 !text-white text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
+            <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
               Real estate recruitment questions.
             </h2>
           </div>
@@ -511,7 +462,7 @@ export default function RealEstatePage() {
             {faqs.map((faq) => (
               <details
                 key={faq.question}
-                className="group rounded-[16px] border border-[#DFE2DF] bg-[#FFFFFF] p-6 sm:p-7"
+                className="group rounded-[16px] border border-[#DFE2DF] bg-[#FDFDFD] p-6 sm:p-7"
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-6 !text-[#545A5B] text-[18px] font-bold leading-7">
                   <span>{faq.question}</span>
@@ -530,41 +481,95 @@ export default function RealEstatePage() {
               </details>
             ))}
           </div>
+
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* =========================================================
+          FINAL CTA
+      ========================================================= */}
       <section className="bg-[#FFFFFF]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <div className="w-full rounded-[16px] bg-[#C1C3AC] px-6 py-14 text-center sm:px-10 sm:py-16 lg:px-16 lg:py-20">
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-              Real Estate
-            </p>
 
-            <h2 className="mx-auto mt-5 max-w-[850px] !text-white text-[38px] font-extrabold leading-[1.03] tracking-[-0.04em] sm:text-[50px] lg:text-[62px]">
-              The right people can help your business{" "}
-              <span className="!text-[#6D7E5A]">move forward.</span>
-            </h2>
+          <div className="w-full rounded-[16px] bg-[#C1C3AC] px-5 py-14 sm:px-10 sm:py-16 lg:px-16 lg:py-20">
 
-            <p className="mx-auto mt-6 max-w-[700px] !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-              Explore real estate opportunities as a candidate or connect with
-              TeamMates for your workforce requirements.
-            </p>
+            <div className="mx-auto max-w-[1050px] text-center">
 
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <Button href="/jobs" variant="primary">
-                Find Jobs
-              </Button>
+              <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
+                Real Estate
+              </p>
 
-              <Button href="/for-employers" variant="primary">
-                Hire Talent
-              </Button>
+              <h2 className="mx-auto mt-5 max-w-[950px] !text-white text-[38px] font-extrabold leading-[1.04] tracking-[-0.045em] sm:text-[50px] lg:text-[60px]">
+                The right people can help your business{" "}
+                <span className="!text-[#6D7E5A]">
+                  move forward.
+                </span>
+              </h2>
+
+              <p className="mx-auto mt-6 max-w-[760px] !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
+                Explore real estate opportunities as a candidate or connect
+                with TeamMates for your workforce requirements.
+              </p>
+
             </div>
+
+            <div className="mx-auto mt-10 grid max-w-[1000px] items-stretch gap-5 md:grid-cols-2">
+
+              {/* Candidate CTA */}
+              <div className="flex h-full flex-col rounded-[16px] bg-white p-7 text-left sm:p-8">
+
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em] !text-[#6D7E5A]">
+                  For Candidates
+                </p>
+
+                <h3 className="mt-3 min-h-[72px] !text-[#545A5B] text-[27px] font-bold leading-[1.12] tracking-[-0.025em] sm:text-[30px]">
+                  Find your next real estate opportunity.
+                </h3>
+
+                <p className="mt-4 max-w-[430px] !text-[#6F746F] text-[15px] leading-7">
+                  Explore real estate opportunities that match your skills,
+                  qualifications and career direction.
+                </p>
+
+                <div className="mt-auto pt-7">
+                  <Button href="/jobs" variant="primary">
+                    Find Jobs
+                  </Button>
+                </div>
+
+              </div>
+
+              {/* Employer CTA */}
+              <div className="flex h-full flex-col rounded-[16px] bg-white p-7 text-left sm:p-8">
+
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em] !text-[#6D7E5A]">
+                  For Employers
+                </p>
+
+                <h3 className="mt-3 min-h-[72px] !text-[#545A5B] text-[27px] font-bold leading-[1.12] tracking-[-0.025em] sm:text-[30px]">
+                  Find the right real estate talent.
+                </h3>
+
+                <p className="mt-4 max-w-[430px] !text-[#6F746F] text-[15px] leading-7">
+                  Share your real estate hiring requirement and connect with
+                  relevant professionals.
+                </p>
+
+                <div className="mt-auto pt-7">
+                  <Button href="/for-employers" variant="primary">
+                    Hire Talent
+                  </Button>
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
+
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

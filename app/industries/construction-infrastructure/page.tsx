@@ -3,49 +3,49 @@ import Button from "@/components/Button";
 
 export const metadata = {
   title:
-    "Education & EdTech Jobs | Recruitment & Staffing | TeamMates HR Solutions",
+    "Construction & Infrastructure Jobs | Recruitment & Staffing | TeamMates HR Solutions",
   description:
-    "Explore education and EdTech career opportunities or connect with TeamMates HR Solutions for recruitment and staffing support across teaching, administration, technology, student support and other education functions in India.",
+    "Explore construction and infrastructure career opportunities or connect with TeamMates HR Solutions for recruitment, staffing and workforce support across engineering, project management, site operations and other construction functions in India.",
 };
 
 const candidateRoles = [
   {
-    title: "Teaching & Faculty",
+    title: "Civil Engineering",
     description:
-      "Opportunities across teaching, faculty, academic delivery and subject-specific education roles.",
+      "Opportunities across civil engineering, site engineering, structural work and technical construction functions.",
   },
   {
-    title: "Academic Administration",
+    title: "Project Management",
     description:
-      "Roles supporting academic coordination, administration, admissions and institutional operations.",
+      "Roles supporting project planning, execution, coordination, documentation and project delivery.",
   },
   {
-    title: "Student Support",
+    title: "Site Operations",
     description:
-      "Career opportunities across student services, counselling, coordination and learner support functions.",
+      "Career opportunities across site supervision, construction activities, coordination and day-to-day site operations.",
   },
   {
-    title: "Sales & Admissions",
+    title: "Quantity Surveying",
     description:
-      "Opportunities across admissions, counselling, inside sales, business development and enrolment support.",
+      "Roles involving quantity estimation, cost measurement, billing, project costing and related functions.",
   },
   {
-    title: "EdTech & Technology",
+    title: "Planning & Estimation",
     description:
-      "Roles across technology, product support, implementation, technical operations and digital learning platforms.",
+      "Opportunities across project planning, estimation, scheduling, resource planning and construction coordination.",
   },
   {
-    title: "Content & Curriculum",
+    title: "Quality & Safety",
     description:
-      "Opportunities involving educational content, curriculum development, instructional design and learning resources.",
+      "Roles supporting quality control, site inspection, safety coordination and construction standards.",
   },
   {
-    title: "Operations & Customer Support",
+    title: "Procurement & Supply Chain",
     description:
-      "Roles supporting education operations, customer service, coordination and day-to-day business functions.",
+      "Opportunities across procurement, materials, vendor coordination, logistics and construction supply chain operations.",
   },
   {
-    title: "Other Education Roles",
+    title: "Other Construction Roles",
     description:
       "Additional opportunities based on current employer requirements and candidate qualifications.",
   },
@@ -55,12 +55,12 @@ const employerServices = [
   {
     title: "Permanent Recruitment",
     description:
-      "Connect with suitable professionals across teaching, administration, admissions, technology and education support functions.",
+      "Connect with suitable professionals across engineering, project management, site operations and construction support functions.",
   },
   {
     title: "Contract Staffing",
     description:
-      "Build flexible teams through staffing solutions aligned with academic, operational and project-based workforce requirements.",
+      "Build flexible teams through staffing solutions aligned with project timelines and workforce requirements.",
   },
   {
     title: "Volume Hiring",
@@ -74,16 +74,16 @@ const employerServices = [
   },
 ];
 
-const commonReasons = [
+const reasons = [
   {
     title: "Relevant Opportunities & Talent",
     description:
-      "Connect candidates with relevant education and EdTech opportunities and employers with suitable professionals.",
+      "Connect candidates with suitable construction and infrastructure opportunities and employers with relevant professionals.",
   },
   {
     title: "Industry Understanding",
     description:
-      "Understanding of academic, technology, admissions, student support and operational workforce requirements.",
+      "Understand engineering, project, site, quality, safety, procurement and other construction-related functions.",
   },
   {
     title: "Responsive Support",
@@ -93,7 +93,7 @@ const commonReasons = [
   {
     title: "People-Focused Approach",
     description:
-      "A recruitment approach that considers skills, qualifications, requirements and career direction.",
+      "A recruitment approach that considers skills, qualifications, experience, requirements and career direction.",
   },
 ];
 
@@ -114,7 +114,7 @@ const process = [
     number: "03",
     title: "Connect",
     description:
-      "We create relevant connections between candidates and employers across the education and EdTech industry.",
+      "We create relevant connections between candidates and employers across the construction and infrastructure industry.",
   },
   {
     number: "04",
@@ -127,25 +127,25 @@ const process = [
 const faqs = [
   {
     question:
-      "What types of education and EdTech roles does TeamMates support?",
+      "What types of construction and infrastructure roles does TeamMates support?",
     answer:
-      "TeamMates supports opportunities across teaching, faculty, academic administration, admissions, student support, sales, technology, content, curriculum, customer support and other related functions.",
+      "TeamMates supports opportunities across civil engineering, project management, site operations, quantity surveying, planning, estimation, quality, safety, procurement and other construction-related functions.",
   },
   {
     question:
-      "Can candidates apply for education and EdTech jobs through TeamMates?",
+      "Can candidates apply for construction jobs through TeamMates?",
     answer:
-      "Yes. Candidates can explore current opportunities and apply for suitable roles based on their qualifications, skills and experience.",
+      "Yes. Candidates can explore current opportunities and apply for suitable construction and infrastructure roles based on their qualifications, skills and experience.",
   },
   {
     question:
-      "Does TeamMates provide staffing services for education organisations?",
+      "Does TeamMates provide staffing services for construction companies?",
     answer:
       "Yes. TeamMates supports employers with permanent recruitment, contract staffing, volume hiring and NAPS / apprenticeship support.",
   },
   {
     question:
-      "Can schools, institutions and EdTech companies hire through TeamMates?",
+      "Can infrastructure and construction companies hire through TeamMates?",
     answer:
       "Yes. Employers can share their hiring requirements with TeamMates for recruitment and staffing support.",
   },
@@ -157,48 +157,46 @@ const faqs = [
   },
 ];
 
-export default function EducationEdTechPage() {
+export default function ConstructionInfrastructurePage() {
   return (
     <main className="bg-[#FDFDFD]">
-      {/* =========================================================
-          HERO
-      ========================================================= */}
+      {/* Hero */}
       <section className="bg-[#FDFDFD]">
         <div className="mx-auto grid min-h-[620px] max-w-[1280px] items-center gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:px-8 lg:py-24">
           <div>
             <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-              Education & EdTech
+              Construction & Infrastructure
             </p>
 
-            <h1 className="mt-5 max-w-[620px] !text-[#545A5B] text-[38px] font-extrabold leading-[1.08] tracking-[-0.035em] sm:text-[46px] lg:text-[52px]">
-              Connecting education talent with{" "}
+            <h1 className="mt-5 max-w-[720px] !text-[#545A5B] text-[38px] font-extrabold leading-[1.08] tracking-[-0.035em] sm:text-[46px] lg:text-[52px]">
+              Connecting construction & infrastructure talent with{" "}
               <span className="!text-[#6D7E5A]">
                 growing opportunities.
               </span>
             </h1>
 
             <p className="mt-7 max-w-[650px] !text-[#6F746F] text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-              Whether you are looking for your next opportunity or building a
-              capable education and EdTech workforce, TeamMates connects
+              Whether you are looking for your next construction opportunity or
+              building a capable infrastructure workforce, TeamMates connects
               candidates and employers through focused recruitment and staffing
               support.
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Button href="/jobs" variant="primary">
-                Find Education Jobs
+                Find Jobs
               </Button>
 
               <Button href="/for-employers" variant="dark">
-                Hire Education Talent
+                Hire Talent
               </Button>
             </div>
           </div>
 
           <div className="relative overflow-hidden rounded-[16px]">
             <Image
-              src="/images/industries/education-edtech.jpg"
-              alt="Education and EdTech professionals working together"
+              src="/images/industries/construction-infrastructure.jpg"
+              alt="Construction and infrastructure professionals working on a project"
               width={900}
               height={700}
               className="h-[420px] w-full object-cover sm:h-[500px] lg:h-[600px]"
@@ -208,31 +206,31 @@ export default function EducationEdTechPage() {
         </div>
       </section>
 
-      {/* =========================================================
-          INDUSTRY RECRUITMENT
-      ========================================================= */}
+      {/* Industry Recruitment */}
       <section className="bg-[#C1C3AC]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-                Education & EdTech Recruitment
+                Industry Recruitment
               </p>
 
               <h2 className="mt-4 !text-white text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px] lg:text-[60px]">
-                Connecting people with education & EdTech opportunities.
+                Connecting people with construction & infrastructure
+                opportunities.
               </h2>
             </div>
 
             <div>
               <p className="!text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-                Education and EdTech organisations need professionals across
-                teaching, academic administration, student support, admissions,
-                technology, content and operational functions.
+                Construction and infrastructure organisations need
+                professionals across engineering, project management, site
+                operations, quality, safety, procurement and other project
+                functions.
               </p>
 
               <p className="mt-5 !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-                TeamMates supports both candidates and employers by creating
+                TeamMates supports candidates and employers by creating
                 relevant connections between skills, career opportunities and
                 workforce requirements.
               </p>
@@ -241,9 +239,7 @@ export default function EducationEdTechPage() {
         </div>
       </section>
 
-      {/* =========================================================
-          FOR CANDIDATES
-      ========================================================= */}
+      {/* For Candidates */}
       <section className="bg-[#FFFFFF]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
@@ -253,18 +249,19 @@ export default function EducationEdTechPage() {
               </p>
 
               <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
-                Find education opportunities that fit your skills.
+                Find construction opportunities that fit your skills.
               </h2>
 
               <p className="mt-6 max-w-[520px] !text-[#6F746F] text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-                Explore career opportunities across teaching, administration,
-                admissions, student support, technology, content and other
-                education and EdTech functions.
+                Explore career opportunities across engineering, project
+                management, site operations, planning, quality, safety,
+                procurement and other construction and infrastructure
+                functions.
               </p>
 
               <div className="mt-8">
                 <Button href="/jobs" variant="primary">
-                  Explore Education Jobs
+                  Explore Jobs
                 </Button>
               </div>
             </div>
@@ -289,9 +286,7 @@ export default function EducationEdTechPage() {
         </div>
       </section>
 
-      {/* =========================================================
-          FOR EMPLOYERS
-      ========================================================= */}
+      {/* For Employers */}
       <section className="bg-[#C1C3AC]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
@@ -301,18 +296,18 @@ export default function EducationEdTechPage() {
               </p>
 
               <h2 className="mt-4 !text-white text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
-                Build stronger education & EdTech teams.
+                Build stronger construction & infrastructure teams.
               </h2>
 
               <p className="mt-6 max-w-[520px] !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-                From teaching and academic roles to technology and operational
+                From engineering and project roles to site and operational
                 requirements, TeamMates provides recruitment and staffing
                 support aligned with your workforce needs.
               </p>
 
               <div className="mt-8">
                 <Button href="/for-employers" variant="primary">
-                  Hire Education Talent
+                  Hire Talent
                 </Button>
               </div>
             </div>
@@ -337,30 +332,29 @@ export default function EducationEdTechPage() {
         </div>
       </section>
 
-      {/* =========================================================
-          WHY TEAMMATES
-      ========================================================= */}
+      {/* Why TeamMates */}
       <section className="bg-[#FFFFFF]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+          <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
                 Why TeamMates
               </p>
 
               <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
-                Recruitment support built around people.
+                Recruitment support built around people and project needs.
               </h2>
 
               <p className="mt-6 max-w-[520px] !text-[#6F746F] text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-                Whether you are building your career or building an education
-                workforce, our approach focuses on relevant opportunities,
-                suitable talent and clear communication.
+                Whether you are looking for your next opportunity or building a
+                construction and infrastructure workforce, our approach
+                focuses on relevant connections, clear communication and
+                practical support.
               </p>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              {commonReasons.map((reason) => (
+              {reasons.map((reason) => (
                 <article
                   key={reason.title}
                   className="rounded-[16px] border border-[#DFE2DF] bg-[#FDFDFD] p-6 sm:p-7"
@@ -379,9 +373,7 @@ export default function EducationEdTechPage() {
         </div>
       </section>
 
-      {/* =========================================================
-          HOW WE WORK
-      ========================================================= */}
+      {/* How We Work */}
       <section className="bg-[#C1C3AC]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
@@ -425,9 +417,7 @@ export default function EducationEdTechPage() {
         </div>
       </section>
 
-      {/* =========================================================
-          FAQ
-      ========================================================= */}
+      {/* FAQ */}
       <section className="bg-[#FFFFFF]">
         <div className="mx-auto max-w-[1000px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="text-center">
@@ -436,7 +426,7 @@ export default function EducationEdTechPage() {
             </p>
 
             <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
-              Education & EdTech recruitment questions.
+              Construction & infrastructure recruitment questions.
             </h2>
           </div>
 
@@ -466,74 +456,68 @@ export default function EducationEdTechPage() {
         </div>
       </section>
 
-      {/* =========================================================
-          FINAL COMBINED CTA
-      ========================================================= */}
+      {/* Final CTA */}
       <section className="bg-[#FFFFFF]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="w-full rounded-[16px] bg-[#C1C3AC] px-5 py-14 sm:px-10 sm:py-16 lg:px-16 lg:py-20">
             <div className="mx-auto max-w-[1050px] text-center">
               <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-                Education & EdTech
+                Construction & Infrastructure
               </p>
 
               <h2 className="mx-auto mt-5 max-w-[1000px] !text-white text-[38px] font-extrabold leading-[1.04] tracking-[-0.045em] sm:text-[50px] lg:text-[60px]">
-                The right people can help education organisations{" "}
+                The right connection can help your construction business{" "}
                 <span className="!text-[#6D7E5A]">
                   move forward.
                 </span>
               </h2>
 
               <p className="mx-auto mt-6 max-w-[760px] !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-                Whether you are looking for your next education and EdTech
-                opportunity or building a capable workforce, TeamMates can help
+                Whether you are looking for your next opportunity or building a
+                construction and infrastructure workforce, TeamMates can help
                 you take the next step.
               </p>
             </div>
 
             <div className="mx-auto mt-10 grid max-w-[1000px] items-stretch gap-5 md:grid-cols-2">
-              {/* Candidate CTA */}
               <div className="flex h-full flex-col rounded-[16px] bg-white p-7 text-left sm:p-8">
                 <p className="text-[11px] font-bold uppercase tracking-[0.14em] !text-[#6D7E5A]">
                   For Candidates
                 </p>
 
                 <h3 className="mt-3 min-h-[72px] !text-[#545A5B] text-[27px] font-bold leading-[1.12] tracking-[-0.025em] sm:text-[30px]">
-                  Find your next education & EdTech opportunity.
+                  Find your next construction opportunity.
                 </h3>
 
                 <p className="mt-4 max-w-[430px] !text-[#6F746F] text-[15px] leading-7">
-                  Explore teaching, academic, admissions, technology, content
-                  and support opportunities that match your skills and
-                  qualifications.
+                  Explore opportunities that match your skills,
+                  qualifications, experience and career direction.
                 </p>
 
                 <div className="mt-auto pt-7">
                   <Button href="/jobs" variant="primary">
-                    Find Education Jobs
+                    Find Jobs
                   </Button>
                 </div>
               </div>
 
-              {/* Employer CTA */}
               <div className="flex h-full flex-col rounded-[16px] bg-white p-7 text-left sm:p-8">
                 <p className="text-[11px] font-bold uppercase tracking-[0.14em] !text-[#6D7E5A]">
                   For Employers
                 </p>
 
                 <h3 className="mt-3 min-h-[72px] !text-[#545A5B] text-[27px] font-bold leading-[1.12] tracking-[-0.025em] sm:text-[30px]">
-                  Build your education & EdTech team.
+                  Find the right construction talent.
                 </h3>
 
                 <p className="mt-4 max-w-[430px] !text-[#6F746F] text-[15px] leading-7">
                   Share your hiring requirement and connect with relevant
-                  academic, admissions, technology, content and operational
-                  talent.
+                  engineering, project, site and support professionals.
                 </p>
 
                 <div className="mt-auto pt-7">
                   <Button href="/for-employers" variant="primary">
-                    Hire Education Talent
+                    Hire Talent
                   </Button>
                 </div>
               </div>

@@ -78,8 +78,7 @@ const faqs = [
   },
   {
     question: "What is the internship duration?",
-    answer:
-      "The internship duration is 4–6 months.",
+    answer: "The internship duration is 4–6 months.",
   },
   {
     question: "What can I gain from the internship?",
@@ -105,65 +104,40 @@ export const metadata = {
     "Explore the TeamMates HR Solutions internship programme. Gain practical industry exposure, develop professional skills and build valuable workplace experience through a 4–6 month internship.",
 };
 
-export default function InternshipsPage() {
+function InternshipHero() {
   return (
-    <main>
-      {/* =========================================================
-          01. INTERNSHIP HERO
-      ========================================================= */}
-      <section className="bg-[#FDFDFD]">
-        <div className="mx-auto grid w-full max-w-[1280px] items-center gap-12 px-4 py-16 sm:px-6 md:px-8 md:py-24 lg:grid-cols-[1fr_0.9fr] lg:gap-20 lg:py-28">
-          <div>
+    <section className="bg-[#FDFDFD]">
+      <div className="mx-auto w-full max-w-[1280px] px-4 py-10 sm:px-6 sm:py-14 md:px-8 lg:py-16">
+        <div className="grid min-h-[560px] overflow-hidden rounded-[16px] bg-[#EEF0EE] lg:grid-cols-[0.9fr_1.1fr]">
+
+          {/* LEFT — TEXT */}
+          <div className="flex h-full flex-col justify-center px-6 py-12 sm:px-10 sm:py-14 lg:px-14 lg:py-16">
             <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
               Internship Programme
             </p>
 
-            <h1 className="mt-5 max-w-[760px] !text-[#545A5B] text-[48px] font-extrabold leading-[1.02] tracking-[-0.04em] sm:text-[62px] lg:text-[76px]">
-              Build your career with{" "}
+            <h1 className="mt-5 max-w-[560px] !text-[#545A5B] !text-[42px] font-extrabold leading-[1.06] tracking-[-0.04em] sm:!text-[52px] lg:!text-[60px]">
+              Build experience.
+              <br />
               <span className="!text-[#6D7E5A]">
-                real-world experience.
+                Start your career.
               </span>
             </h1>
 
-            <p className="mt-7 max-w-[650px] text-[17px] leading-8 !text-[#6F746F] sm:text-[18px]">
-              Gain practical industry exposure, develop workplace skills and
-              take your first step toward your professional career through
-              the TeamMates HR Solutions internship programme.
+            <p className="mt-6 max-w-[520px] !text-[#6F746F] !text-[16px] leading-7 sm:!text-[17px] sm:leading-8">
+              Gain practical industry exposure, develop professional skills
+              and build valuable workplace experience through the TeamMates
+              HR Solutions internship programme.
             </p>
 
-            <div className="mt-8 grid max-w-[620px] gap-3 sm:grid-cols-3">
-              <div className="rounded-[16px] border border-[#DFE2DF] bg-[#FFFFFF] p-5">
-                <p className="text-[10px] font-bold uppercase tracking-[0.12em] !text-[#6D7E5A]">
-                  Eligibility
-                </p>
-                <p className="mt-2 text-[15px] font-bold !text-[#545A5B]">
-                  Students & Graduates
-                </p>
-              </div>
+            <p className="mt-4 !text-[#545A5B] !text-[14px] font-semibold">
+              Internship Duration: 4–6 Months
+            </p>
 
-              <div className="rounded-[16px] border border-[#DFE2DF] bg-[#FFFFFF] p-5">
-                <p className="text-[10px] font-bold uppercase tracking-[0.12em] !text-[#6D7E5A]">
-                  Duration
-                </p>
-                <p className="mt-2 text-[15px] font-bold !text-[#545A5B]">
-                  4–6 Months
-                </p>
-              </div>
-
-              <div className="rounded-[16px] border border-[#DFE2DF] bg-[#FFFFFF] p-5">
-                <p className="text-[10px] font-bold uppercase tracking-[0.12em] !text-[#6D7E5A]">
-                  Focus
-                </p>
-                <p className="mt-2 text-[15px] font-bold !text-[#545A5B]">
-                  Industry Exposure
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#apply"
-                className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-full !bg-[#6D7E5A] px-7 py-3 text-[13px] font-semibold !text-white transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6D7E5A] focus-visible:ring-offset-2"
+                className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-full !bg-[#6D7E5A] px-7 py-3 text-[13px] font-semibold !text-white transition-all duration-300 hover:-translate-y-0.5 hover:!bg-[#38472A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6D7E5A] focus-visible:ring-offset-2"
               >
                 <span className="!text-white">
                   Apply for Internship
@@ -179,15 +153,15 @@ export default function InternshipsPage() {
 
               <Link
                 href="/contact-us"
-                className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-[#6D7E5A] !bg-white px-7 py-3 text-[13px] font-semibold !text-[#6D7E5A] transition-all duration-300 hover:-translate-y-0.5"
+                className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-[#6D7E5A] !bg-white px-7 py-3 text-[13px] font-semibold !text-[#6D7E5A] transition-all duration-300 hover:-translate-y-0.5 hover:!bg-[#6D7E5A] hover:!text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6D7E5A] focus-visible:ring-offset-2"
               >
-                <span className="!text-[#6D7E5A]">
+                <span className="!text-[#6D7E5A] group-hover:!text-white">
                   Enquire Now
                 </span>
 
                 <span
                   aria-hidden="true"
-                  className="!text-[#6D7E5A] transition-transform duration-300 group-hover:translate-x-1"
+                  className="!text-[#6D7E5A] transition-transform duration-300 group-hover:translate-x-1 group-hover:!text-white"
                 >
                   →
                 </span>
@@ -195,18 +169,32 @@ export default function InternshipsPage() {
             </div>
           </div>
 
-          <div className="relative min-h-[460px] overflow-hidden rounded-[16px] bg-[#EEF0EE] sm:min-h-[560px] lg:min-h-[680px]">
+          {/* RIGHT — IMAGE */}
+          <div className="relative min-h-[420px] h-full lg:min-h-[560px]">
             <Image
-              src="/images/internship-students.jpg"
-              alt="Students gaining professional workplace experience"
+              src="/images/internship-hero.jpg"
+              alt="Students and young professionals gaining practical workplace experience through an internship"
               fill
               priority
-              sizes="(max-width: 1024px) 100vw, 45vw"
+              sizes="(max-width: 1024px) 100vw, 55vw"
               className="object-cover"
             />
+
+            <div className="absolute inset-0 bg-[#38472A]/10" />
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+  );
+}
+
+export default function InternshipsPage() {
+  return (
+    <main>
+      {/* =========================================================
+          01. INTERNSHIP HERO
+      ========================================================= */}
+      <InternshipHero />
 
       {/* =========================================================
           02. ABOUT THE INTERNSHIP
@@ -238,8 +226,8 @@ export default function InternshipsPage() {
                 <p className="mt-6 text-[16px] leading-8 !text-[#6F746F] sm:text-[17px]">
                   Through practical workplace experience, participants can
                   strengthen professional skills, understand industry
-                  expectations and prepare themselves for the transition
-                  into the professional world.
+                  expectations and prepare themselves for the transition into
+                  the professional world.
                 </p>
 
                 <div className="mt-8 flex flex-wrap gap-3">
@@ -281,8 +269,8 @@ export default function InternshipsPage() {
             </h2>
 
             <p className="mt-6 max-w-[650px] text-[16px] leading-7 !text-[#6F746F] sm:text-[17px] sm:leading-8">
-              Our internship programme is designed for individuals looking
-              to gain practical experience, develop professional skills and
+              Our internship programme is designed for individuals looking to
+              gain practical experience, develop professional skills and
               understand real-world workplace environments.
             </p>
           </div>
@@ -343,8 +331,8 @@ export default function InternshipsPage() {
             </h2>
 
             <p className="mt-6 max-w-[650px] text-[16px] leading-7 !text-white sm:text-[17px] sm:leading-8">
-              Develop practical understanding and professional skills
-              through real workplace exposure.
+              Develop practical understanding and professional skills through
+              real workplace exposure.
             </p>
           </div>
 
@@ -400,9 +388,9 @@ export default function InternshipsPage() {
               </h2>
 
               <p className="mt-6 max-w-[580px] text-[16px] leading-8 !text-[#6F746F] sm:text-[17px]">
-                An internship is an opportunity to understand how
-                professional workplaces function while developing skills
-                that support your future career.
+                An internship is an opportunity to understand how professional
+                workplaces function while developing skills that support your
+                future career.
               </p>
 
               <div className="mt-10 border-t border-[#DFE2DF]">
@@ -410,6 +398,7 @@ export default function InternshipsPage() {
                   <h3 className="!text-[22px] !text-[#545A5B]">
                     Learn
                   </h3>
+
                   <p className="mt-2 text-[14px] leading-7 !text-[#6F746F]">
                     Understand professional processes and workplace
                     expectations.
@@ -420,6 +409,7 @@ export default function InternshipsPage() {
                   <h3 className="!text-[22px] !text-[#545A5B]">
                     Experience
                   </h3>
+
                   <p className="mt-2 text-[14px] leading-7 !text-[#6F746F]">
                     Gain practical exposure through real workplace
                     environments.
@@ -430,9 +420,9 @@ export default function InternshipsPage() {
                   <h3 className="!text-[22px] !text-[#545A5B]">
                     Grow
                   </h3>
+
                   <p className="mt-2 text-[14px] leading-7 !text-[#6F746F]">
-                    Develop skills and confidence for your next career
-                    step.
+                    Develop skills and confidence for your next career step.
                   </p>
                 </div>
               </div>
@@ -459,8 +449,8 @@ export default function InternshipsPage() {
             </h2>
 
             <p className="mt-6 max-w-[650px] text-[16px] leading-7 !text-white sm:text-[17px] sm:leading-8">
-              Explore internship opportunities across industries supported
-              by TeamMates HR Solutions, subject to current availability.
+              Explore internship opportunities across industries supported by
+              TeamMates HR Solutions, subject to current availability.
             </p>
           </div>
 
@@ -690,15 +680,19 @@ export default function InternshipsPage() {
                   <option value="" disabled>
                     Select your status
                   </option>
+
                   <option value="student">
                     Currently Studying
                   </option>
+
                   <option value="graduate">
                     Recently Graduated
                   </option>
+
                   <option value="job-seeker">
                     Looking for Opportunities
                   </option>
+
                   <option value="other">
                     Other
                   </option>
@@ -844,8 +838,8 @@ export default function InternshipsPage() {
             </h2>
 
             <p className="mx-auto mt-6 max-w-[650px] text-[16px] leading-7 !text-white sm:text-[18px] sm:leading-8">
-              Take the first step toward building practical skills,
-              workplace confidence and valuable industry exposure.
+              Take the first step toward building practical skills, workplace
+              confidence and valuable industry exposure.
             </p>
 
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">

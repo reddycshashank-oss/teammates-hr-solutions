@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Button from "@/components/Button";
-import Footer from "@/components/Footer";
 
 export const metadata = {
   title:
@@ -75,18 +74,27 @@ const employerServices = [
   },
 ];
 
-const candidateReasons = [
-  "Access to relevant retail opportunities",
-  "Opportunities across different retail functions",
-  "Clear communication throughout the recruitment process",
-  "Support based on your skills and career direction",
-];
-
-const employerReasons = [
-  "Relevant retail and sales talent",
-  "Understanding of retail functions",
-  "Responsive recruitment support",
-  "People-focused hiring approach",
+const reasons = [
+  {
+    title: "Relevant Opportunities & Talent",
+    description:
+      "Connect candidates with suitable retail opportunities and employers with relevant retail and sales professionals.",
+  },
+  {
+    title: "Industry Understanding",
+    description:
+      "Understand store operations, sales, customer service, inventory, management and other retail functions.",
+  },
+  {
+    title: "Responsive Support",
+    description:
+      "Clear communication and coordination throughout the recruitment journey.",
+  },
+  {
+    title: "People-Focused Approach",
+    description:
+      "A recruitment approach that considers skills, experience, requirements and career direction.",
+  },
 ];
 
 const process = [
@@ -155,7 +163,7 @@ export default function RetailPage() {
               Retail
             </p>
 
-            <h1 className="mt-5 max-w-[720px] !text-[#545A5B] text-[48px] font-extrabold leading-[1.02] tracking-[-0.045em] sm:text-[62px] lg:text-[78px]">
+            <h1 className="mt-5 max-w-[720px] !text-[#545A5B] text-[38px] font-extrabold leading-[1.08] tracking-[-0.035em] sm:text-[46px] lg:text-[52px]">
               Connecting retail talent with{" "}
               <span className="!text-[#6D7E5A]">
                 growing businesses.
@@ -193,7 +201,7 @@ export default function RetailPage() {
         </div>
       </section>
 
-      {/* Industry Introduction */}
+      {/* Retail Recruitment */}
       <section className="bg-[#C1C3AC]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
@@ -223,7 +231,7 @@ export default function RetailPage() {
         </div>
       </section>
 
-      {/* Candidates */}
+      {/* For Candidates */}
       <section className="bg-[#FFFFFF]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
@@ -269,7 +277,7 @@ export default function RetailPage() {
         </div>
       </section>
 
-      {/* Employers */}
+      {/* For Employers */}
       <section className="bg-[#C1C3AC]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
@@ -315,89 +323,48 @@ export default function RetailPage() {
         </div>
       </section>
 
-      {/* Why Candidates */}
+      {/* Why TeamMates */}
       <section className="bg-[#FFFFFF]">
-        <div className="mx-auto grid max-w-[1280px] gap-12 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:items-center lg:px-8 lg:py-24">
-          <div className="relative overflow-hidden rounded-[16px]">
-            <Image
-              src="/images/industries/retail-team.jpg"
-              alt="Retail professionals collaborating at work"
-              width={900}
-              height={700}
-              className="h-[420px] w-full object-cover sm:h-[520px]"
-            />
-          </div>
+        <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+          <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:items-center">
+            <div>
+              <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
+                Why TeamMates
+              </p>
 
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-              For Professionals
-            </p>
+              <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
+                Recruitment support built around people and retail needs.
+              </h2>
 
-            <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
-              Support throughout your retail career journey.
-            </h2>
+              <p className="mt-6 max-w-[520px] !text-[#6F746F] text-[16px] leading-7 sm:text-[18px] sm:leading-8">
+                Whether you are looking for your next opportunity or building
+                a retail workforce, our approach focuses on relevant
+                connections, clear communication and practical support.
+              </p>
+            </div>
 
-            <p className="mt-6 !text-[#6F746F] text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-              Finding the right retail opportunity is about more than a job
-              title. We focus on understanding your skills, experience and
-              career direction.
-            </p>
-
-            <div className="mt-8 space-y-4">
-              {candidateReasons.map((reason) => (
-                <div
-                  key={reason}
-                  className="flex items-start gap-4 border-b border-[#DFE2DF] pb-4"
+            <div className="grid gap-4 sm:grid-cols-2">
+              {reasons.map((reason) => (
+                <article
+                  key={reason.title}
+                  className="rounded-[16px] border border-[#DFE2DF] bg-[#FDFDFD] p-6 sm:p-7"
                 >
-                  <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#6D7E5A] text-[12px] font-bold !text-white">
-                    ✓
-                  </span>
+                  <h3 className="!text-[#545A5B] text-[22px] font-bold leading-tight">
+                    {reason.title}
+                  </h3>
 
-                  <p className="!text-[#545A5B] text-[15px] font-semibold leading-6">
-                    {reason}
+                  <p className="mt-4 !text-[#6F746F] text-[15px] leading-7">
+                    {reason.description}
                   </p>
-                </div>
+                </article>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Employers */}
-      <section className="bg-[#C1C3AC]">
-        <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <div className="mx-auto max-w-[850px] text-center">
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-              For Employers
-            </p>
-
-            <h2 className="mt-4 !text-white text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
-              Recruitment support built around your retail workforce.
-            </h2>
-
-            <p className="mt-6 !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-              We work with employers to understand their requirements before
-              connecting them with relevant retail and sales talent.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {employerReasons.map((reason) => (
-              <article
-                key={reason}
-                className="rounded-[16px] border border-[#DFE2DF] bg-[#FFFFFF] p-6 sm:p-7"
-              >
-                <p className="!text-[#545A5B] text-[18px] font-bold leading-7">
-                  {reason}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* How We Work */}
-      <section className="bg-[#FFFFFF]">
+      <section className="bg-[#C1C3AC]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr]">
             <div>
@@ -405,11 +372,11 @@ export default function RetailPage() {
                 How We Work
               </p>
 
-              <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
+              <h2 className="mt-4 !text-white text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
                 A straightforward recruitment journey.
               </h2>
 
-              <p className="mt-6 !text-[#6F746F] text-[16px] leading-7 sm:text-[18px] sm:leading-8">
+              <p className="mt-6 max-w-[520px] !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
                 Whether you are a candidate or an employer, our approach
                 focuses on understanding first, followed by relevant
                 connections and consistent support.
@@ -420,7 +387,7 @@ export default function RetailPage() {
               {process.map((item) => (
                 <article
                   key={item.number}
-                  className="rounded-[16px] border border-[#DFE2DF] bg-[#FDFDFD] p-6 sm:p-7"
+                  className="rounded-[16px] border border-[#DFE2DF] bg-[#FFFFFF] p-6 sm:p-7"
                 >
                   <p className="text-[12px] font-bold tracking-[0.12em] !text-[#6D7E5A]">
                     {item.number}
@@ -440,68 +407,15 @@ export default function RetailPage() {
         </div>
       </section>
 
-      {/* Current Opportunities */}
-      <section className="bg-[#C1C3AC]">
-        <div className="mx-auto grid max-w-[1280px] gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1fr_auto] lg:items-center lg:px-8 lg:py-24">
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-              Current Opportunities
-            </p>
-
-            <h2 className="mt-4 !text-white text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
-              Explore current retail opportunities.
-            </h2>
-
-            <p className="mt-5 max-w-[700px] !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-              Browse available roles and find opportunities that match your
-              skills, experience and career direction.
-            </p>
-          </div>
-
-          <Button href="/jobs" variant="primary">
-            View Retail Jobs
-          </Button>
-        </div>
-      </section>
-
-      {/* Hiring Requirement */}
-      <section className="bg-[#FFFFFF]">
-        <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <div className="w-full rounded-[16px] bg-[#FDFDFD] p-8 sm:p-10 lg:p-14">
-            <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
-              <div>
-                <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-                  Hiring Requirement
-                </p>
-
-                <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
-                  Looking for retail talent?
-                </h2>
-
-                <p className="mt-5 max-w-[700px] !text-[#6F746F] text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-                  Share your requirement with TeamMates and our recruitment
-                  team can help you connect with relevant retail and sales
-                  professionals.
-                </p>
-              </div>
-
-              <Button href="/for-employers" variant="primary">
-                Share Hiring Requirement
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ */}
-      <section className="bg-[#C1C3AC]">
+      <section className="bg-[#FFFFFF]">
         <div className="mx-auto max-w-[1000px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
           <div className="text-center">
             <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
               FAQ
             </p>
 
-            <h2 className="mt-4 !text-white text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
+            <h2 className="mt-4 !text-[#545A5B] text-[38px] font-extrabold leading-[1.05] tracking-[-0.04em] sm:text-[50px]">
               Retail recruitment questions.
             </h2>
           </div>
@@ -510,7 +424,7 @@ export default function RetailPage() {
             {faqs.map((faq) => (
               <details
                 key={faq.question}
-                className="group rounded-[16px] border border-[#DFE2DF] bg-[#FFFFFF] p-6 sm:p-7"
+                className="group rounded-[16px] border border-[#DFE2DF] bg-[#FDFDFD] p-6 sm:p-7"
               >
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-6 !text-[#545A5B] text-[18px] font-bold leading-7">
                   <span>{faq.question}</span>
@@ -535,35 +449,69 @@ export default function RetailPage() {
       {/* Final CTA */}
       <section className="bg-[#FFFFFF]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <div className="w-full rounded-[16px] bg-[#C1C3AC] px-6 py-14 text-center sm:px-10 sm:py-16 lg:px-16 lg:py-20">
-            <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
-              Retail
-            </p>
+          <div className="w-full rounded-[16px] bg-[#C1C3AC] px-5 py-14 text-center sm:px-10 sm:py-16 lg:px-16 lg:py-20">
+            <div className="mx-auto max-w-[1050px]">
+              <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
+                Retail
+              </p>
 
-            <h2 className="mx-auto mt-5 max-w-[850px] !text-white text-[38px] font-extrabold leading-[1.03] tracking-[-0.04em] sm:text-[50px] lg:text-[62px]">
-              The right people can help your retail business{" "}
-              <span className="!text-[#6D7E5A]">move forward.</span>
-            </h2>
+              <h2 className="mx-auto mt-5 max-w-[1000px] !text-white text-[38px] font-extrabold leading-[1.04] tracking-[-0.045em] sm:text-[50px] lg:text-[60px]">
+                The right retail connection can help you{" "}
+                <span className="!text-[#6D7E5A]">move forward.</span>
+              </h2>
 
-            <p className="mx-auto mt-6 max-w-[700px] !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
-              Explore retail opportunities as a candidate or connect with
-              TeamMates for your retail hiring requirements.
-            </p>
+              <p className="mx-auto mt-6 max-w-[760px] !text-white text-[16px] leading-7 sm:text-[18px] sm:leading-8">
+                Whether you are looking for your next opportunity or building a
+                retail workforce, TeamMates can help you take the next step.
+              </p>
+            </div>
 
-            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-              <Button href="/jobs" variant="primary">
-                Find Retail Jobs
-              </Button>
+            <div className="mx-auto mt-10 grid max-w-[1000px] items-stretch gap-5 md:grid-cols-2">
+              <div className="flex h-full flex-col rounded-[16px] bg-white p-7 text-left sm:p-8">
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em] !text-[#6D7E5A]">
+                  For Candidates
+                </p>
 
-              <Button href="/for-employers" variant="primary">
-                Hire Retail Talent
-              </Button>
+                <h3 className="mt-3 min-h-[72px] !text-[#545A5B] text-[27px] font-bold leading-[1.12] tracking-[-0.025em] sm:text-[30px]">
+                  Find your next retail opportunity.
+                </h3>
+
+                <p className="mt-4 max-w-[430px] !text-[#6F746F] text-[15px] leading-7">
+                  Explore retail opportunities that match your skills,
+                  experience and career direction.
+                </p>
+
+                <div className="mt-auto pt-7">
+                  <Button href="/jobs" variant="primary">
+                    Find Retail Jobs
+                  </Button>
+                </div>
+              </div>
+
+              <div className="flex h-full flex-col rounded-[16px] bg-white p-7 text-left sm:p-8">
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em] !text-[#6D7E5A]">
+                  For Employers
+                </p>
+
+                <h3 className="mt-3 min-h-[72px] !text-[#545A5B] text-[27px] font-bold leading-[1.12] tracking-[-0.025em] sm:text-[30px]">
+                  Find the right retail talent.
+                </h3>
+
+                <p className="mt-4 max-w-[430px] !text-[#6F746F] text-[15px] leading-7">
+                  Share your hiring requirement and connect with relevant
+                  retail and sales professionals.
+                </p>
+
+                <div className="mt-auto pt-7">
+                  <Button href="/for-employers" variant="primary">
+                    Hire Retail Talent
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

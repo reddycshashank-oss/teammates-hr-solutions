@@ -4,15 +4,15 @@ import Link from "next/link";
 const employerLinks = [
   {
     label: "Recruitment Services",
-    href: "/services",
+    href: "/for-employers/recruitment-services",
   },
   {
     label: "Staffing Solutions",
-    href: "/services",
+    href: "/for-employers/staffing-solutions",
   },
   {
     label: "NAPS / Apprenticeship Support",
-    href: "/services",
+    href: "/for-employers/naps-apprenticeship-support",
   },
 ];
 
