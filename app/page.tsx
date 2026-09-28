@@ -1559,14 +1559,16 @@ export default function Home() {
 
     {/* SECTION HEADER */}
     <div className="max-w-[720px]">
-      <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#A4A9A5] sm:text-[12px]">
+      <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#6D7E5A] sm:text-[12px]">
         Testimonials
       </p>
 
-      <h2 className="mt-5 !text-[#FFFFFF]">
-        Trusted by people who{" "}
-        <span className="!text-[#A4A9A5]">move forward.</span>
-      </h2>
+      <h2 className="mt-5 !text-white">
+  Trusted by people who{" "}
+  <span className="!text-[#6D7E5A]">
+    move forward.
+  </span>
+</h2>
 
       <p className="mt-6 max-w-[620px] text-[16px] leading-7 !text-[#FFFFFF] sm:text-[17px] sm:leading-8">
         A few words from people who have experienced the TeamMates

@@ -3,7 +3,6 @@
 /* =========================================================
    TEAMMATES HR SOLUTIONS
    GLOBAL DESIGN SYSTEM
-   STEP 4 — GLOBAL UI FOUNDATION
    ========================================================= */
 
 
@@ -27,6 +26,8 @@
   --tm-olive-dark: #38472A;
 
   --tm-black: #111111;
+
+  /* DEFAULT HEADING COLOR */
   --tm-heading: #545A5B;
 
   --tm-section-olive: #C1C3AC;
@@ -41,7 +42,10 @@
   --tm-background: var(--tm-off-white);
   --tm-surface: var(--tm-white);
 
+  /* Normal primary text */
   --tm-text-primary: var(--tm-black);
+
+  /* Secondary / muted text */
   --tm-text-secondary: var(--tm-muted);
 
   --tm-border: var(--tm-border-color);
@@ -100,9 +104,11 @@
   box-sizing: border-box;
 }
 
+
 html {
   scroll-behavior: smooth;
 }
+
 
 body {
   margin: 0;
@@ -124,6 +130,17 @@ body {
    TYPOGRAPHY
    ========================================================= */
 
+/*
+  DEFAULT HEADINGS
+  ----------------
+  Headings now use #545A5B instead of #111111.
+
+  Individual sections can still override this with:
+  !text-white
+  !text-[#6D7E5A]
+  !text-[#545A5B]
+*/
+
 h1,
 h2,
 h3,
@@ -132,7 +149,7 @@ h5,
 h6 {
   margin: 0;
 
-  color: var(--tm-text-primary);
+  color: var(--tm-heading);
 
   font-family: var(--font-manrope), sans-serif;
 
@@ -471,6 +488,7 @@ img {
     scroll-behavior: auto;
   }
 
+
   *,
   *::before,
   *::after {
@@ -497,6 +515,7 @@ img {
       var(--tm-container)
     );
   }
+
 
   .tm-section {
     padding-block: var(--tm-space-10);
