@@ -115,7 +115,7 @@ type FooterCardProps = {
 
 function FooterCard({ title, links }: FooterCardProps) {
   return (
-    <div className="h-fit rounded-[16px] border border-[#DFE2DF] bg-white p-6 sm:p-7">
+    <div className="h-full rounded-[16px] border border-[#DFE2DF] bg-white p-6 sm:p-7">
       <h3 className="!mb-6 !text-[13px] !font-extrabold !leading-none !tracking-[0.12em] !text-[#545A5B]">
         {title}
       </h3>
@@ -146,6 +146,7 @@ function FooterCard({ title, links }: FooterCardProps) {
 export default function Footer() {
   return (
     <footer className="bg-[#C1C3AC]">
+
       {/* =========================================================
           MAIN FOOTER
       ========================================================= */}
@@ -153,23 +154,24 @@ export default function Footer() {
       <div className="mx-auto w-full max-w-[1320px] px-4 py-14 sm:px-6 md:px-8 md:py-16 lg:py-20">
 
         {/* =======================================================
-            BRAND + CARDS
+            TOP FOUR CARDS
         ======================================================= */}
 
-        <div className="grid gap-12 lg:grid-cols-[0.85fr_2.15fr] lg:gap-14">
+        <div className="grid items-stretch gap-5 sm:grid-cols-2 xl:grid-cols-[1fr_0.9fr_0.9fr_1.3fr]">
 
           {/* =====================================================
-              BRAND
+              LOGO + SOCIAL MEDIA
           ===================================================== */}
 
-          <div className="max-w-[360px]">
+          <div className="h-full rounded-[16px] border border-[#DFE2DF] bg-white p-6 sm:p-7">
+
             <Link
               href="/"
               aria-label="TeamMates HR Solutions"
               className="inline-flex items-center"
             >
               <Image
-                src="/images/teammates_hr_solutions_logo.png"
+                src="/images/teammates_footer_logo.png"
                 alt="TeamMates HR Solutions"
                 width={190}
                 height={60}
@@ -178,144 +180,181 @@ export default function Footer() {
               />
             </Link>
 
-            <p className="mt-6 max-w-[320px] text-[15px] font-semibold leading-7 !text-white">
-              Connecting talent with opportunities and helping businesses
-              build stronger teams across India.
-            </p>
+            {/* =================================================
+                SOCIAL MEDIA
+            ================================================= */}
 
-            <div className="mt-8">
-              <p className="text-[12px] font-extrabold uppercase tracking-[0.12em] !text-white">
-                Recruitment & Staffing
-              </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
 
-              <p className="mt-2 text-[14px] font-semibold !text-white">
-                Bangalore · India
-              </p>
+              {/* Instagram */}
 
-              {/* =================================================
-                  SOCIAL MEDIA
-              ================================================= */}
-
-              <div className="mt-5 flex items-center gap-3">
-
-                {/* Instagram */}
-                <a
-                  href="https://www.instagram.com/team.mateshrsolutions/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="TeamMates HR Solutions on Instagram"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/40 !text-white transition-all duration-200 hover:border-white hover:bg-white hover:!text-[#6D7E5A]"
+              <a
+                href="https://www.instagram.com/team.mateshrsolutions/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TeamMates HR Solutions on Instagram"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#DFE2DF] !text-[#6D7E5A] transition-all duration-200 hover:border-[#6D7E5A] hover:bg-[#6D7E5A] hover:!text-white"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-[18px] w-[18px]"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
                 >
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-[18px] w-[18px]"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
-                  >
-                    <rect
-                      x="3"
-                      y="3"
-                      width="18"
-                      height="18"
-                      rx="5"
-                    />
+                  <rect
+                    x="3"
+                    y="3"
+                    width="18"
+                    height="18"
+                    rx="5"
+                  />
 
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="4.2"
-                    />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="4.2"
+                  />
 
-                    <circle
-                      cx="17.4"
-                      cy="6.6"
-                      r="1"
-                      fill="currentColor"
-                      stroke="none"
-                    />
-                  </svg>
-                </a>
-
-                {/* Facebook */}
-                <a
-                  href="https://www.facebook.com/teammateshrsolution"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="TeamMates HR Solutions on Facebook"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/40 !text-white transition-all duration-200 hover:border-white hover:bg-white hover:!text-[#6D7E5A]"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-[18px] w-[18px]"
+                  <circle
+                    cx="17.4"
+                    cy="6.6"
+                    r="1"
                     fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M14 8h3V4.5c-.52-.07-1.84-.18-3.5-.18-3.47 0-5.85 2.12-5.85 6.02V13H4v3.9h3.65V24h4.48v-7.1h3.65l.58-3.9h-4.23v-2.3c0-1.13.31-1.9 1.87-1.9Z" />
-                  </svg>
-                </a>
+                    stroke="none"
+                  />
+                </svg>
+              </a>
 
-                {/* LinkedIn */}
-                <a
-                  href="https://www.linkedin.com/company/team-mates-hr-solution/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="TeamMates HR Solutions on LinkedIn"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/40 !text-white transition-all duration-200 hover:border-white hover:bg-white hover:!text-[#6D7E5A]"
+              {/* Facebook */}
+
+              <a
+                href="https://www.facebook.com/teammateshrsolution"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TeamMates HR Solutions on Facebook"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#DFE2DF] !text-[#6D7E5A] transition-all duration-200 hover:border-[#6D7E5A] hover:bg-[#6D7E5A] hover:!text-white"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-[18px] w-[18px]"
+                  fill="currentColor"
+                  aria-hidden="true"
                 >
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="h-[18px] w-[18px]"
-                    fill="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path d="M5.1 3.5A2.1 2.1 0 1 1 5.1 7.7a2.1 2.1 0 0 1 0-4.2ZM3.3 9h3.6v11.5H3.3V9Zm5.8 0h3.45v1.57h.05c.48-.91 1.65-1.87 3.4-1.87 3.63 0 4.3 2.39 4.3 5.5v6.3h-3.6v-5.59c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.69H9.1V9Z" />
-                  </svg>
-                </a>
+                  <path d="M14 8h3V4.5c-.52-.07-1.84-.18-3.5-.18-3.47 0-5.85 2.12-5.85 6.02V13H4v3.9h3.65V24h4.48v-7.1h3.65l.58-3.9h-4.23v-2.3c0-1.13.31-1.9 1.87-1.9Z" />
+                </svg>
+              </a>
 
-              </div>
+              {/* LinkedIn */}
+
+              <a
+                href="https://www.linkedin.com/company/team-mates-hr-solution/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="TeamMates HR Solutions on LinkedIn"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#DFE2DF] !text-[#6D7E5A] transition-all duration-200 hover:border-[#6D7E5A] hover:bg-[#6D7E5A] hover:!text-white"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-[18px] w-[18px]"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M5.1 3.5A2.1 2.1 0 1 1 5.1 7.7a2.1 2.1 0 0 1 0-4.2ZM3.3 9h3.6v11.5H3.3V9Zm5.8 0h3.45v1.57h.05c.48-.91 1.65-1.87 3.4-1.87 3.63 0 4.3 2.39 4.3 5.5v6.3h-3.6v-5.59c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.69H9.1V9Z" />
+                </svg>
+              </a>
+
+              {/* Email */}
+
+              <a
+                href="mailto:info@teammateshrsolutions.com"
+                aria-label="Email TeamMates HR Solutions"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#DFE2DF] !text-[#6D7E5A] transition-all duration-200 hover:border-[#6D7E5A] hover:bg-[#6D7E5A] hover:!text-white"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-[18px] w-[18px]"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect
+                    x="3"
+                    y="5"
+                    width="18"
+                    height="14"
+                    rx="2"
+                  />
+
+                  <path d="m4 7 8 6 8-6" />
+                </svg>
+              </a>
+
             </div>
           </div>
 
           {/* =====================================================
-              EMPLOYERS + COMPANY + CONTACT
+              FOR EMPLOYERS
           ===================================================== */}
 
-          <div className="grid items-start gap-5 sm:grid-cols-2 xl:grid-cols-[1fr_1fr_1.08fr]">
+          <FooterCard
+            title="For Employers"
+            links={employerLinks}
+          />
 
-            {/* FOR EMPLOYERS */}
+          {/* =====================================================
+              COMPANY
+          ===================================================== */}
 
-            <FooterCard
-              title="For Employers"
-              links={employerLinks}
-            />
+          <FooterCard
+            title="Company"
+            links={companyLinks}
+          />
 
-            {/* COMPANY */}
+          {/* =====================================================
+              CONTACT DETAILS
+          ===================================================== */}
 
-            <FooterCard
-              title="Company"
-              links={companyLinks}
-            />
+          <div className="h-full rounded-[16px] border border-[#DFE2DF] bg-white p-6 sm:p-7">
 
-            {/* CONTACT DETAILS */}
+            <h3 className="!mb-6 !text-[13px] !font-extrabold !leading-none !tracking-[0.12em] !text-[#545A5B]">
+              Contact Details
+            </h3>
 
-            <div className="h-fit rounded-[16px] border border-[#DFE2DF] bg-white p-6 sm:p-7">
+            {/* PHONE */}
 
-              <h3 className="!mb-6 !text-[13px] !font-extrabold !leading-none !tracking-[0.12em] !text-[#545A5B]">
-                Contact Details
-              </h3>
+            <div className="flex items-start gap-4">
 
-              {/* PHONE */}
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#EEF0EE] !text-[#6D7E5A]">
+
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-[18px] w-[18px]"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6.6 3.8 9 3.2c.6-.15 1.2.17 1.45.72l1.15 2.7c.22.52.08 1.12-.34 1.48L9.8 9.55a14.2 14.2 0 0 0 4.65 4.65l1.45-1.46c.37-.41.97-.55 1.49-.33l2.7 1.15c.55.24.87.85.72 1.45l-.6 2.4c-.15.58-.68.99-1.28.99C11.22 18.4 5.6 12.78 5.6 5.07c0-.6.41-1.13 1-1.28Z" />
+                </svg>
+
+              </div>
 
               <div>
+
                 <p className="text-[10px] font-extrabold uppercase tracking-[0.12em] !text-[#A4A9A5]">
                   Phone
                 </p>
 
-                <div className="mt-2 flex flex-col gap-1.5">
+                <div className="mt-1.5 flex flex-col gap-1">
 
                   <a
                     href="tel:08045148859"
@@ -332,34 +371,45 @@ export default function Footer() {
                   </a>
 
                 </div>
+
               </div>
 
-              {/* EMAIL */}
+            </div>
 
-              <div className="mt-6">
+            {/* OFFICE */}
 
-                <p className="text-[10px] font-extrabold uppercase tracking-[0.12em] !text-[#A4A9A5]">
-                  Email
-                </p>
+            <div className="mt-6 flex items-start gap-4">
 
-                <a
-                  href="mailto:info@teammateshrsolutions.com"
-                  className="mt-2 inline-block break-all text-[14px] font-semibold !text-[#545A5B] transition-colors duration-200 hover:!text-[#6D7E5A]"
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#EEF0EE] !text-[#6D7E5A]">
+
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-[18px] w-[18px]"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
                 >
-                  info@teammateshrsolutions.com
-                </a>
+                  <path d="M12 21s7-6.1 7-12A7 7 0 0 0 5 9c0 5.9 7 12 7 12Z" />
+
+                  <circle
+                    cx="12"
+                    cy="9"
+                    r="2.3"
+                  />
+                </svg>
 
               </div>
 
-              {/* OFFICE */}
-
-              <div className="mt-6">
+              <div>
 
                 <p className="text-[10px] font-extrabold uppercase tracking-[0.12em] !text-[#A4A9A5]">
                   Office
                 </p>
 
-                <p className="mt-2 max-w-[330px] text-[14px] font-semibold leading-6 !text-[#545A5B]">
+                <p className="mt-1.5 max-w-[330px] text-[14px] font-semibold leading-6 !text-[#545A5B]">
                   #2065, 3rd Stage, 16th “B” Cross,
                   <br />
                   Mother Dairy Cross, Yelahanka New Town,
@@ -370,20 +420,16 @@ export default function Footer() {
               </div>
 
             </div>
-
           </div>
         </div>
 
         {/* =========================================================
             INDUSTRIES WE SERVE
-            SECTION STAYS #C1C3AC
         ========================================================= */}
 
         <div className="mt-12 border-t border-white/40 pt-10">
 
-          {/* =======================================================
-              WHITE HEADING BAR
-          ======================================================= */}
+          {/* WHITE HEADING BAR */}
 
           <div className="rounded-[14px] border border-[#DFE2DF] bg-white px-6 py-6 sm:px-8 sm:py-7">
 
@@ -395,9 +441,7 @@ export default function Footer() {
 
           </div>
 
-          {/* =======================================================
-              INDUSTRY BUTTONS
-          ======================================================= */}
+          {/* INDUSTRY BUTTONS */}
 
           <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
@@ -453,7 +497,6 @@ export default function Footer() {
           </div>
 
         </div>
-
       </div>
     </footer>
   );
