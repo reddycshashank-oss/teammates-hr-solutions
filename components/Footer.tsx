@@ -105,7 +105,7 @@ const legalLinks = [
   },
 ];
 
-type FooterColumnProps = {
+type FooterCardProps = {
   title: string;
   links: {
     label: string;
@@ -113,13 +113,10 @@ type FooterColumnProps = {
   }[];
 };
 
-function FooterColumn({
-  title,
-  links,
-}: FooterColumnProps) {
+function FooterCard({ title, links }: FooterCardProps) {
   return (
-    <div>
-      <h3 className="!mb-6 !text-[13px] !font-extrabold !leading-none !tracking-[0.12em] !text-white">
+    <div className="h-fit rounded-[16px] border border-[#DFE2DF] bg-white p-6 sm:p-7">
+      <h3 className="!mb-6 !text-[13px] !font-extrabold !leading-none !tracking-[0.12em] !text-[#545A5B]">
         {title}
       </h3>
 
@@ -128,9 +125,16 @@ function FooterColumn({
           <li key={`${link.label}-${link.href}`}>
             <Link
               href={link.href}
-              className="text-[15px] font-semibold leading-6 !text-white transition-colors duration-200 hover:!text-white/75"
+              className="group flex items-center justify-between gap-4 text-[14px] font-semibold leading-6 !text-[#545A5B] transition-colors duration-200 hover:!text-[#6D7E5A]"
             >
-              {link.label}
+              <span>{link.label}</span>
+
+              <span
+                aria-hidden="true"
+                className="shrink-0 !text-[#6D7E5A] transition-transform duration-200 group-hover:translate-x-1"
+              >
+                →
+              </span>
             </Link>
           </li>
         ))}
@@ -146,8 +150,13 @@ export default function Footer() {
           MAIN FOOTER
       ========================================================= */}
 
-      <div className="mx-auto w-full max-w-[1280px] px-4 py-14 sm:px-6 md:px-8 md:py-16 lg:py-20">
-        <div className="grid gap-14 lg:grid-cols-[1.15fr_2.85fr] lg:gap-16">
+      <div className="mx-auto w-full max-w-[1320px] px-4 py-14 sm:px-6 md:px-8 md:py-16 lg:py-20">
+
+        {/* =======================================================
+            BRAND + CARDS
+        ======================================================= */}
+
+        <div className="grid gap-12 lg:grid-cols-[0.85fr_2.15fr] lg:gap-14">
 
           {/* =====================================================
               BRAND
@@ -272,92 +281,146 @@ export default function Footer() {
           </div>
 
           {/* =====================================================
-              FOOTER NAVIGATION
+              EMPLOYERS + COMPANY + CONTACT
           ===================================================== */}
 
-          <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3">
+          <div className="grid items-start gap-5 sm:grid-cols-2 xl:grid-cols-[1fr_1fr_1.08fr]">
 
-            <FooterColumn
+            {/* FOR EMPLOYERS */}
+
+            <FooterCard
               title="For Employers"
               links={employerLinks}
             />
 
-            <FooterColumn
+            {/* COMPANY */}
+
+            <FooterCard
               title="Company"
               links={companyLinks}
             />
 
-            <FooterColumn
-              title="Industries"
-              links={industryLinks}
-            />
+            {/* CONTACT DETAILS */}
+
+            <div className="h-fit rounded-[16px] border border-[#DFE2DF] bg-white p-6 sm:p-7">
+
+              <h3 className="!mb-6 !text-[13px] !font-extrabold !leading-none !tracking-[0.12em] !text-[#545A5B]">
+                Contact Details
+              </h3>
+
+              {/* PHONE */}
+
+              <div>
+                <p className="text-[10px] font-extrabold uppercase tracking-[0.12em] !text-[#A4A9A5]">
+                  Phone
+                </p>
+
+                <div className="mt-2 flex flex-col gap-1.5">
+
+                  <a
+                    href="tel:08045148859"
+                    className="text-[14px] font-semibold !text-[#545A5B] transition-colors duration-200 hover:!text-[#6D7E5A]"
+                  >
+                    080-45148859
+                  </a>
+
+                  <a
+                    href="tel:+916360812255"
+                    className="text-[14px] font-semibold !text-[#545A5B] transition-colors duration-200 hover:!text-[#6D7E5A]"
+                  >
+                    +91 6360812255
+                  </a>
+
+                </div>
+              </div>
+
+              {/* EMAIL */}
+
+              <div className="mt-6">
+
+                <p className="text-[10px] font-extrabold uppercase tracking-[0.12em] !text-[#A4A9A5]">
+                  Email
+                </p>
+
+                <a
+                  href="mailto:info@teammateshrsolutions.com"
+                  className="mt-2 inline-block break-all text-[14px] font-semibold !text-[#545A5B] transition-colors duration-200 hover:!text-[#6D7E5A]"
+                >
+                  info@teammateshrsolutions.com
+                </a>
+
+              </div>
+
+              {/* OFFICE */}
+
+              <div className="mt-6">
+
+                <p className="text-[10px] font-extrabold uppercase tracking-[0.12em] !text-[#A4A9A5]">
+                  Office
+                </p>
+
+                <p className="mt-2 max-w-[330px] text-[14px] font-semibold leading-6 !text-[#545A5B]">
+                  #2065, 3rd Stage, 16th “B” Cross,
+                  <br />
+                  Mother Dairy Cross, Yelahanka New Town,
+                  <br />
+                  Bangalore - 560064
+                </p>
+
+              </div>
+
+            </div>
 
           </div>
         </div>
 
         {/* =========================================================
-            CONTACT INFORMATION
+            INDUSTRIES WE SERVE
+            SECTION STAYS #C1C3AC
         ========================================================= */}
 
-        <div className="mt-14 border-t border-white/30 pt-8">
-          <div className="grid gap-8 sm:grid-cols-3">
+        <div className="mt-12 border-t border-white/40 pt-10">
 
-            {/* PHONE */}
+          {/* =======================================================
+              WHITE HEADING BAR
+          ======================================================= */}
 
-            <div>
-              <p className="text-[11px] font-extrabold uppercase tracking-[0.12em] !text-white">
-                Phone
-              </p>
+          <div className="rounded-[14px] border border-[#DFE2DF] bg-white px-6 py-6 sm:px-8 sm:py-7">
 
-              <div className="mt-3 flex flex-col gap-2">
+            <h2 className="!text-[18px] !font-extrabold !uppercase !tracking-[0.12em] !text-[#545A5B] sm:!text-[20px]">
+              Industries We Serve
+            </h2>
 
-                <a
-                  href="tel:08045148859"
-                  className="text-[15px] font-semibold !text-white transition-colors duration-200 hover:!text-white/75"
-                >
-                  080-45148859
-                </a>
+            <div className="mt-4 h-[4px] w-16 rounded-full bg-[#6D7E5A]" />
 
-                <a
-                  href="tel:+916360812255"
-                  className="text-[15px] font-semibold !text-white transition-colors duration-200 hover:!text-white/75"
-                >
-                  +91 6360812255
-                </a>
+          </div>
 
-              </div>
-            </div>
+          {/* =======================================================
+              INDUSTRY BUTTONS
+          ======================================================= */}
 
-            {/* EMAIL */}
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
-            <div>
-              <p className="text-[11px] font-extrabold uppercase tracking-[0.12em] !text-white">
-                Email
-              </p>
-
-              <a
-                href="mailto:info@teammateshrsolutions.com"
-                className="mt-3 inline-block text-[15px] font-semibold !text-white transition-colors duration-200 hover:!text-white/75"
+            {industryLinks.map((industry) => (
+              <Link
+                key={industry.href}
+                href={industry.href}
+                className="group flex min-h-[68px] items-center justify-between gap-4 rounded-[12px] border border-[#DFE2DF] bg-white px-5 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#6D7E5A] hover:shadow-[0_8px_24px_rgba(56,71,42,0.08)]"
               >
-                info@teammateshrsolutions.com
-              </a>
-            </div>
 
-            {/* OFFICE */}
+                <span className="text-[14px] font-semibold leading-5 !text-[#545A5B] sm:text-[15px]">
+                  {industry.label}
+                </span>
 
-            <div>
-              <p className="text-[11px] font-extrabold uppercase tracking-[0.12em] !text-white">
-                Office
-              </p>
+                <span
+                  aria-hidden="true"
+                  className="shrink-0 text-[20px] font-medium !text-[#6D7E5A] transition-transform duration-300 group-hover:translate-x-1"
+                >
+                  →
+                </span>
 
-              <p className="mt-3 max-w-[330px] text-[15px] font-semibold leading-6 !text-white">
-                #2065, 3rd Stage, 16th “B” Cross,
-                <br />
-                Mother Dairy Cross, Yelahanka New Town,
-                <br />
-                Bangalore - 560064
-              </p>
-            </div>
+              </Link>
+            ))}
 
           </div>
         </div>
@@ -368,13 +431,15 @@ export default function Footer() {
       ========================================================= */}
 
       <div className="border-t border-white/30">
-        <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-4 px-4 py-5 sm:px-6 md:flex-row md:items-center md:justify-between md:px-8">
+
+        <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-4 px-4 py-5 sm:px-6 md:flex-row md:items-center md:justify-between md:px-8">
 
           <p className="text-[13px] font-semibold !text-white">
             © 2026 TeamMates HR Solutions. All Rights Reserved.
           </p>
 
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+
             {legalLinks.map((link) => (
               <Link
                 key={link.href}
@@ -384,9 +449,11 @@ export default function Footer() {
                 {link.label}
               </Link>
             ))}
+
           </div>
 
         </div>
+
       </div>
     </footer>
   );
