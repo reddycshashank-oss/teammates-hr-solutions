@@ -51,6 +51,14 @@ export default function Home() {
     preload="metadata"
     className="absolute inset-0 h-full w-full object-cover"
   >
+    {/* Mobile 9:16 Video */}
+    <source
+      src="/videos/teammateshr-hero-mobile.mp4"
+      type="video/mp4"
+      media="(max-width: 767px)"
+    />
+
+    {/* Desktop Video */}
     <source
       src="/videos/teammateshr-hero.mp4"
       type="video/mp4"
