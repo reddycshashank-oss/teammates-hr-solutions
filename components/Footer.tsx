@@ -182,6 +182,92 @@ export default function Footer() {
               <p className="mt-2 text-[14px] font-semibold !text-white">
                 Bangalore · India
               </p>
+
+              {/* =================================================
+                  SOCIAL MEDIA
+              ================================================= */}
+
+              <div className="mt-5 flex items-center gap-3">
+
+                {/* Instagram */}
+                <a
+                  href="https://www.instagram.com/team.mateshrsolutions/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TeamMates HR Solutions on Instagram"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/40 !text-white transition-all duration-200 hover:border-white hover:bg-white hover:!text-[#6D7E5A]"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-[18px] w-[18px]"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect
+                      x="3"
+                      y="3"
+                      width="18"
+                      height="18"
+                      rx="5"
+                    />
+
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="4.2"
+                    />
+
+                    <circle
+                      cx="17.4"
+                      cy="6.6"
+                      r="1"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                  </svg>
+                </a>
+
+                {/* Facebook */}
+                <a
+                  href="https://www.facebook.com/teammateshrsolution"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TeamMates HR Solutions on Facebook"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/40 !text-white transition-all duration-200 hover:border-white hover:bg-white hover:!text-[#6D7E5A]"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-[18px] w-[18px]"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M14 8h3V4.5c-.52-.07-1.84-.18-3.5-.18-3.47 0-5.85 2.12-5.85 6.02V13H4v3.9h3.65V24h4.48v-7.1h3.65l.58-3.9h-4.23v-2.3c0-1.13.31-1.9 1.87-1.9Z" />
+                  </svg>
+                </a>
+
+                {/* LinkedIn */}
+                <a
+                  href="https://www.linkedin.com/company/team-mates-hr-solution/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TeamMates HR Solutions on LinkedIn"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/40 !text-white transition-all duration-200 hover:border-white hover:bg-white hover:!text-[#6D7E5A]"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="h-[18px] w-[18px]"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M5.1 3.5A2.1 2.1 0 1 1 5.1 7.7a2.1 2.1 0 0 1 0-4.2ZM3.3 9h3.6v11.5H3.3V9Zm5.8 0h3.45v1.57h.05c.48-.91 1.65-1.87 3.4-1.87 3.63 0 4.3 2.39 4.3 5.5v6.3h-3.6v-5.59c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.69H9.1V9Z" />
+                  </svg>
+                </a>
+
+              </div>
             </div>
           </div>
 

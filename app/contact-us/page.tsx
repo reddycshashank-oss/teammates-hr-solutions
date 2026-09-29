@@ -1,12 +1,87 @@
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
+import type { FormEvent } from "react";
+import type { Metadata } from "next";
+import { useState } from "react";
+
+const metadata: Metadata = {
   title: "Contact TeamMates HR Solutions | Recruitment & Staffing India",
   description:
     "Contact TeamMates HR Solutions for recruitment, staffing, talent acquisition and career opportunities. Get in touch with our team for hiring or job enquiries.",
 };
 
 export default function ContactUsPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | "";
+    message: string;
+  }>({
+    type: "",
+    message: "",
+  });
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const data = {
+      name: String(formData.get("name") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      phone: String(formData.get("phone") || "").trim(),
+      enquiryType: String(formData.get("enquiryType") || "").trim(),
+      subject: String(formData.get("subject") || "").trim(),
+      message: String(formData.get("message") || "").trim(),
+    };
+
+    setIsSubmitting(true);
+    setStatus({
+      type: "",
+      message: "",
+    });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        setStatus({
+          type: "error",
+          message:
+            result.message ||
+            "Unable to submit your enquiry. Please try again.",
+        });
+        return;
+      }
+
+      setStatus({
+        type: "success",
+        message:
+          result.message ||
+          "Your enquiry has been submitted successfully.",
+      });
+
+      form.reset();
+    } catch (error) {
+      console.error("Contact form error:", error);
+
+      setStatus({
+        type: "error",
+        message: "Something went wrong. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <main>
       {/* =========================================================
@@ -42,9 +117,8 @@ export default function ContactUsPage() {
       <section className="bg-[#C1C3AC]">
         <div className="mx-auto w-full max-w-[1280px] px-4 py-20 sm:px-6 md:px-8 md:py-24 lg:py-28">
           <div className="grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:gap-6">
-            {/* =====================================================
-                CONTACT INFORMATION CARD
-            ===================================================== */}
+
+            {/* CONTACT INFORMATION CARD */}
 
             <div className="rounded-[16px] border border-[#DFE2DF] bg-[#FFFFFF] p-7 sm:p-8 lg:p-10">
               <p className="text-[11px] font-bold uppercase tracking-[0.16em] !text-[#6D7E5A] sm:text-[12px]">
@@ -65,6 +139,7 @@ export default function ContactUsPage() {
               {/* CONTACT DETAILS */}
 
               <div className="mt-10 border-t border-[#DFE2DF]">
+
                 {/* Phone */}
 
                 <div className="border-b border-[#DFE2DF] py-6">
@@ -115,9 +190,7 @@ export default function ContactUsPage() {
               </div>
             </div>
 
-            {/* =====================================================
-                ENQUIRY FORM CARD
-            ===================================================== */}
+            {/* ENQUIRY FORM CARD */}
 
             <div className="rounded-[16px] border border-[#DFE2DF] bg-[#FFFFFF] p-7 sm:p-8 lg:p-10">
               <div className="max-w-[680px]">
@@ -130,8 +203,7 @@ export default function ContactUsPage() {
                 </h2>
 
                 <form
-                  action="/contact-us"
-                  method="POST"
+                  onSubmit={handleSubmit}
                   className="mt-8 space-y-5"
                 >
                   {/* Name + Email */}
@@ -150,6 +222,7 @@ export default function ContactUsPage() {
                         name="name"
                         type="text"
                         placeholder="Your full name"
+                        autoComplete="name"
                         required
                         className="h-12 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FFFFFF] px-4 text-[14px] !text-[#545A5B] outline-none transition-colors focus:border-[#6D7E5A] focus:ring-0"
                       />
@@ -168,6 +241,7 @@ export default function ContactUsPage() {
                         name="email"
                         type="email"
                         placeholder="you@example.com"
+                        autoComplete="email"
                         required
                         className="h-12 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FFFFFF] px-4 text-[14px] !text-[#545A5B] outline-none transition-colors focus:border-[#6D7E5A] focus:ring-0"
                       />
@@ -190,6 +264,7 @@ export default function ContactUsPage() {
                         name="phone"
                         type="tel"
                         placeholder="+91"
+                        autoComplete="tel"
                         className="h-12 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FFFFFF] px-4 text-[14px] !text-[#545A5B] outline-none transition-colors focus:border-[#6D7E5A] focus:ring-0"
                       />
                     </div>
@@ -268,25 +343,49 @@ export default function ContactUsPage() {
                     />
                   </div>
 
+                  {/* Status Message */}
+
+                  {status.message && (
+                    <div
+                      role="status"
+                      aria-live="polite"
+                      className={`rounded-[10px] border px-4 py-3 text-[13px] leading-6 ${
+                        status.type === "success"
+                          ? "border-[#6D7E5A]/30 bg-[#EEF0EE] !text-[#38472A]"
+                          : "border-red-200 bg-red-50 !text-red-700"
+                      }`}
+                    >
+                      {status.message}
+                    </div>
+                  )}
+
                   {/* Submit */}
 
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-full !bg-[#6D7E5A] px-7 py-3 text-[13px] font-semibold tracking-[-0.01em] !text-white transition-all duration-300 hover:!bg-[#6D7E5A] hover:!text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6D7E5A] focus-visible:ring-offset-2"
+                      disabled={isSubmitting}
+                      className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-full !bg-[#6D7E5A] px-7 py-3 text-[13px] font-semibold tracking-[-0.01em] !text-white transition-all duration-300 hover:!bg-[#38472A] hover:!text-white disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6D7E5A] focus-visible:ring-offset-2"
                     >
                       <span className="!text-white">
-                        Send Enquiry
+                        {isSubmitting ? "Sending..." : "Send Enquiry"}
                       </span>
 
-                      <span
-                        aria-hidden="true"
-                        className="!text-white transition-transform duration-300 group-hover:translate-x-1"
-                      >
-                        →
-                      </span>
+                      {!isSubmitting && (
+                        <span
+                          aria-hidden="true"
+                          className="!text-white transition-transform duration-300 group-hover:translate-x-1"
+                        >
+                          →
+                        </span>
+                      )}
                     </button>
                   </div>
+
+                  <p className="text-[12px] leading-5 !text-[#6F746F]">
+                    By submitting this form, you agree to be contacted
+                    regarding your enquiry.
+                  </p>
                 </form>
               </div>
             </div>
@@ -300,6 +399,7 @@ export default function ContactUsPage() {
 
       <section className="bg-[#FFFFFF]">
         <div className="mx-auto w-full max-w-[1280px] px-4 py-20 sm:px-6 md:px-8 md:py-24 lg:py-28">
+
           {/* SECTION INTRO */}
 
           <div className="max-w-[760px]">
@@ -321,6 +421,7 @@ export default function ContactUsPage() {
           {/* ADDRESS + MAP */}
 
           <div className="mt-12 grid gap-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-stretch">
+
             {/* ADDRESS CARD */}
 
             <div className="flex flex-col justify-between rounded-[16px] border border-[#DFE2DF] bg-[#FFFFFF] p-7 sm:p-8">
@@ -345,7 +446,7 @@ export default function ContactUsPage() {
                   href="https://www.google.com/maps/search/?api=1&query=TeamMates+HR+Solutions+Yelahanka+New+Town+Bangalore"
                   target="_blank"
                   rel="noreferrer"
-                  className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-full !bg-[#6D7E5A] px-6 py-3 text-[13px] font-semibold !text-white transition-all duration-300 hover:!bg-[#6D7E5A] hover:!text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6D7E5A] focus-visible:ring-offset-2"
+                  className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-full !bg-[#6D7E5A] px-6 py-3 text-[13px] font-semibold !text-white transition-all duration-300 hover:!bg-[#38472A] hover:!text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6D7E5A] focus-visible:ring-offset-2"
                 >
                   <span className="!text-white">
                     Get Directions

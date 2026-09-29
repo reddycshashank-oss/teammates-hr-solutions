@@ -1,5 +1,334 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { FormEvent, useState } from "react";
+
+function InternshipApplicationForm() {
+  const [submitting, setSubmitting] = useState(false);
+
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | "";
+    message: string;
+  }>({
+    type: "",
+    message: "",
+  });
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    setSubmitting(true);
+
+    setStatus({
+      type: "",
+      message: "",
+    });
+
+    try {
+      const form = event.currentTarget;
+      const formData = new FormData(form);
+
+      const response = await fetch("/api/internship-application", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        setStatus({
+          type: "error",
+          message:
+            data.message ||
+            "Unable to submit your application. Please try again.",
+        });
+
+        return;
+      }
+
+      setStatus({
+        type: "success",
+        message:
+          "Your internship application has been submitted successfully. Our team will get in touch with you.",
+      });
+
+      form.reset();
+    } catch (error) {
+      console.error(
+        "Internship application submission error:",
+        error
+      );
+
+      setStatus({
+        type: "error",
+        message:
+          "Something went wrong while submitting your application. Please try again.",
+      });
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      encType="multipart/form-data"
+      className="mt-10 grid gap-5 md:grid-cols-2"
+    >
+      {/* FULL NAME */}
+      <div>
+        <label
+          htmlFor="full-name"
+          className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
+        >
+          Full Name *
+        </label>
+
+        <input
+          id="full-name"
+          name="fullName"
+          type="text"
+          required
+          placeholder="Enter your full name"
+          className="h-14 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 text-[14px] !text-[#545A5B] placeholder:!text-[#A4A9A5] outline-none transition-colors focus:border-[#6D7E5A]"
+        />
+      </div>
+
+      {/* EMAIL */}
+      <div>
+        <label
+          htmlFor="email"
+          className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
+        >
+          Email Address *
+        </label>
+
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          placeholder="Enter your email"
+          className="h-14 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 text-[14px] !text-[#545A5B] placeholder:!text-[#A4A9A5] outline-none transition-colors focus:border-[#6D7E5A]"
+        />
+      </div>
+
+      {/* PHONE */}
+      <div>
+        <label
+          htmlFor="phone"
+          className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
+        >
+          Phone Number *
+        </label>
+
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          required
+          placeholder="Enter your phone number"
+          className="h-14 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 text-[14px] !text-[#545A5B] placeholder:!text-[#A4A9A5] outline-none transition-colors focus:border-[#6D7E5A]"
+        />
+      </div>
+
+      {/* QUALIFICATION */}
+      <div>
+        <label
+          htmlFor="qualification"
+          className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
+        >
+          Educational Qualification *
+        </label>
+
+        <input
+          id="qualification"
+          name="qualification"
+          type="text"
+          required
+          placeholder="e.g. B.E, B.Com, MBA, BCA"
+          className="h-14 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 text-[14px] !text-[#545A5B] placeholder:!text-[#A4A9A5] outline-none transition-colors focus:border-[#6D7E5A]"
+        />
+      </div>
+
+      {/* SPECIALIZATION */}
+      <div>
+        <label
+          htmlFor="specialization"
+          className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
+        >
+          Area of Study / Specialization
+        </label>
+
+        <input
+          id="specialization"
+          name="specialization"
+          type="text"
+          placeholder="Enter your specialization"
+          className="h-14 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 text-[14px] !text-[#545A5B] placeholder:!text-[#A4A9A5] outline-none transition-colors focus:border-[#6D7E5A]"
+        />
+      </div>
+
+      {/* COLLEGE */}
+      <div>
+        <label
+          htmlFor="college"
+          className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
+        >
+          College / Institution
+        </label>
+
+        <input
+          id="college"
+          name="college"
+          type="text"
+          placeholder="Enter your college or institution"
+          className="h-14 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 text-[14px] !text-[#545A5B] placeholder:!text-[#A4A9A5] outline-none transition-colors focus:border-[#6D7E5A]"
+        />
+      </div>
+
+      {/* CURRENT STATUS */}
+      <div>
+        <label
+          htmlFor="current-status"
+          className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
+        >
+          Current Status
+        </label>
+
+        <select
+          id="current-status"
+          name="currentStatus"
+          defaultValue=""
+          className="h-14 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 text-[14px] !text-[#545A5B] outline-none transition-colors focus:border-[#6D7E5A]"
+        >
+          <option value="" disabled>
+            Select your status
+          </option>
+
+          <option value="student">
+            Currently Studying
+          </option>
+
+          <option value="graduate">
+            Recently Graduated
+          </option>
+
+          <option value="job-seeker">
+            Looking for Opportunities
+          </option>
+
+          <option value="other">
+            Other
+          </option>
+        </select>
+      </div>
+
+      {/* PREFERRED LOCATION */}
+      <div>
+        <label
+          htmlFor="location"
+          className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
+        >
+          Preferred Location
+        </label>
+
+        <input
+          id="location"
+          name="location"
+          type="text"
+          placeholder="City / Location"
+          className="h-14 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 text-[14px] !text-[#545A5B] placeholder:!text-[#A4A9A5] outline-none transition-colors focus:border-[#6D7E5A]"
+        />
+      </div>
+
+      {/* RESUME */}
+      <div>
+        <label
+          htmlFor="resume"
+          className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
+        >
+          Resume
+        </label>
+
+        <input
+          id="resume"
+          name="resume"
+          type="file"
+          accept=".pdf,.doc,.docx"
+          className="flex h-14 w-full items-center rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 py-3 text-[13px] !text-[#545A5B] file:mr-4 file:rounded-full file:border-0 file:bg-[#6D7E5A] file:px-4 file:py-2 file:text-[12px] file:font-semibold file:!text-white"
+        />
+
+        <p className="mt-2 text-[11px] !text-[#6F746F]">
+          Accepted formats: PDF, DOC, DOCX
+        </p>
+      </div>
+
+      {/* MESSAGE */}
+      <div className="md:col-span-2">
+        <label
+          htmlFor="message"
+          className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
+        >
+          Message
+        </label>
+
+        <textarea
+          id="message"
+          name="message"
+          rows={5}
+          placeholder="Tell us about your internship interests..."
+          className="w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 py-4 text-[14px] !text-[#545A5B] placeholder:!text-[#A4A9A5] outline-none transition-colors focus:border-[#6D7E5A]"
+        />
+      </div>
+
+      {/* STATUS MESSAGE */}
+      {status.message && (
+        <div className="md:col-span-2">
+          <div
+            role="alert"
+            className={`rounded-[10px] border px-4 py-4 text-[14px] leading-6 ${
+              status.type === "success"
+                ? "border-[#6D7E5A]/30 bg-[#EEF0EE] !text-[#38472A]"
+                : "border-red-200 bg-red-50 !text-red-700"
+            }`}
+          >
+            {status.message}
+          </div>
+        </div>
+      )}
+
+      {/* SUBMIT */}
+      <div className="md:col-span-2">
+        <button
+          type="submit"
+          disabled={submitting}
+          className={`group inline-flex min-h-12 items-center justify-center gap-3 rounded-full !bg-[#6D7E5A] px-7 py-3 text-[13px] font-semibold !text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6D7E5A] focus-visible:ring-offset-2 ${
+            submitting
+              ? "cursor-not-allowed opacity-70"
+              : "hover:-translate-y-0.5"
+          }`}
+        >
+          <span className="!text-white">
+            {submitting
+              ? "Submitting..."
+              : "Submit Application"}
+          </span>
+
+          {!submitting && (
+            <span
+              aria-hidden="true"
+              className="!text-white transition-transform duration-300 group-hover:translate-x-1"
+            >
+              →
+            </span>
+          )}
+        </button>
+      </div>
+    </form>
+  );
+}
 
 const benefits = [
   {
@@ -78,7 +407,8 @@ const faqs = [
   },
   {
     question: "What is the internship duration?",
-    answer: "The internship duration is 4–6 months.",
+    answer:
+      "The internship duration is 4–6 months.",
   },
   {
     question: "What can I gain from the internship?",
@@ -96,13 +426,6 @@ const faqs = [
       "You can contact TeamMates HR Solutions through the contact details provided on our website.",
   },
 ];
-
-export const metadata = {
-  title:
-    "Internship Programme | Practical Industry Experience | TeamMates HR Solutions",
-  description:
-    "Explore the TeamMates HR Solutions internship programme. Gain practical industry exposure, develop professional skills and build valuable workplace experience through a 4–6 month internship.",
-};
 
 function InternshipHero() {
   return (
@@ -544,234 +867,7 @@ export default function InternshipsPage() {
               </p>
             </div>
 
-            <form
-              action="/internships"
-              method="POST"
-              encType="multipart/form-data"
-              className="mt-10 grid gap-5 md:grid-cols-2"
-            >
-              {/* FULL NAME */}
-              <div>
-                <label
-                  htmlFor="full-name"
-                  className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
-                >
-                  Full Name *
-                </label>
-
-                <input
-                  id="full-name"
-                  name="fullName"
-                  type="text"
-                  required
-                  placeholder="Enter your full name"
-                  className="h-14 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 text-[14px] !text-[#545A5B] placeholder:!text-[#A4A9A5] outline-none transition-colors focus:border-[#6D7E5A]"
-                />
-              </div>
-
-              {/* EMAIL */}
-              <div>
-                <label
-                  htmlFor="email"
-                  className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
-                >
-                  Email Address *
-                </label>
-
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="Enter your email"
-                  className="h-14 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 text-[14px] !text-[#545A5B] placeholder:!text-[#A4A9A5] outline-none transition-colors focus:border-[#6D7E5A]"
-                />
-              </div>
-
-              {/* PHONE */}
-              <div>
-                <label
-                  htmlFor="phone"
-                  className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
-                >
-                  Phone Number *
-                </label>
-
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  required
-                  placeholder="Enter your phone number"
-                  className="h-14 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 text-[14px] !text-[#545A5B] placeholder:!text-[#A4A9A5] outline-none transition-colors focus:border-[#6D7E5A]"
-                />
-              </div>
-
-              {/* QUALIFICATION */}
-              <div>
-                <label
-                  htmlFor="qualification"
-                  className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
-                >
-                  Educational Qualification *
-                </label>
-
-                <input
-                  id="qualification"
-                  name="qualification"
-                  type="text"
-                  required
-                  placeholder="e.g. B.E, B.Com, MBA, BCA"
-                  className="h-14 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 text-[14px] !text-[#545A5B] placeholder:!text-[#A4A9A5] outline-none transition-colors focus:border-[#6D7E5A]"
-                />
-              </div>
-
-              {/* SPECIALIZATION */}
-              <div>
-                <label
-                  htmlFor="specialization"
-                  className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
-                >
-                  Area of Study / Specialization
-                </label>
-
-                <input
-                  id="specialization"
-                  name="specialization"
-                  type="text"
-                  placeholder="Enter your specialization"
-                  className="h-14 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 text-[14px] !text-[#545A5B] placeholder:!text-[#A4A9A5] outline-none transition-colors focus:border-[#6D7E5A]"
-                />
-              </div>
-
-              {/* COLLEGE */}
-              <div>
-                <label
-                  htmlFor="college"
-                  className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
-                >
-                  College / Institution
-                </label>
-
-                <input
-                  id="college"
-                  name="college"
-                  type="text"
-                  placeholder="Enter your college or institution"
-                  className="h-14 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 text-[14px] !text-[#545A5B] placeholder:!text-[#A4A9A5] outline-none transition-colors focus:border-[#6D7E5A]"
-                />
-              </div>
-
-              {/* CURRENT STATUS */}
-              <div>
-                <label
-                  htmlFor="current-status"
-                  className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
-                >
-                  Current Status
-                </label>
-
-                <select
-                  id="current-status"
-                  name="currentStatus"
-                  defaultValue=""
-                  className="h-14 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 text-[14px] !text-[#545A5B] outline-none transition-colors focus:border-[#6D7E5A]"
-                >
-                  <option value="" disabled>
-                    Select your status
-                  </option>
-
-                  <option value="student">
-                    Currently Studying
-                  </option>
-
-                  <option value="graduate">
-                    Recently Graduated
-                  </option>
-
-                  <option value="job-seeker">
-                    Looking for Opportunities
-                  </option>
-
-                  <option value="other">
-                    Other
-                  </option>
-                </select>
-              </div>
-
-              {/* PREFERRED LOCATION */}
-              <div>
-                <label
-                  htmlFor="location"
-                  className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
-                >
-                  Preferred Location
-                </label>
-
-                <input
-                  id="location"
-                  name="location"
-                  type="text"
-                  placeholder="City / Location"
-                  className="h-14 w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 text-[14px] !text-[#545A5B] placeholder:!text-[#A4A9A5] outline-none transition-colors focus:border-[#6D7E5A]"
-                />
-              </div>
-
-              {/* RESUME */}
-              <div>
-                <label
-                  htmlFor="resume"
-                  className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
-                >
-                  Resume
-                </label>
-
-                <input
-                  id="resume"
-                  name="resume"
-                  type="file"
-                  accept=".pdf,.doc,.docx"
-                  className="flex h-14 w-full items-center rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 py-3 text-[13px] !text-[#545A5B] file:mr-4 file:rounded-full file:border-0 file:bg-[#6D7E5A] file:px-4 file:py-2 file:text-[12px] file:font-semibold file:!text-white"
-                />
-              </div>
-
-              {/* MESSAGE */}
-              <div className="md:col-span-2">
-                <label
-                  htmlFor="message"
-                  className="mb-2 block text-[11px] font-bold uppercase tracking-[0.1em] !text-[#545A5B]"
-                >
-                  Message
-                </label>
-
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  placeholder="Tell us about your internship interests..."
-                  className="w-full rounded-[10px] border border-[#DFE2DF] bg-[#FDFDFD] px-4 py-4 text-[14px] !text-[#545A5B] placeholder:!text-[#A4A9A5] outline-none transition-colors focus:border-[#6D7E5A]"
-                />
-              </div>
-
-              {/* SUBMIT */}
-              <div className="md:col-span-2">
-                <button
-                  type="submit"
-                  className="group inline-flex min-h-12 items-center justify-center gap-3 rounded-full !bg-[#6D7E5A] px-7 py-3 text-[13px] font-semibold !text-white transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#6D7E5A] focus-visible:ring-offset-2"
-                >
-                  <span className="!text-white">
-                    Submit Application
-                  </span>
-
-                  <span
-                    aria-hidden="true"
-                    className="!text-white transition-transform duration-300 group-hover:translate-x-1"
-                  >
-                    →
-                  </span>
-                </button>
-              </div>
-            </form>
+            <InternshipApplicationForm />
           </div>
         </div>
       </section>

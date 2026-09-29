@@ -1,11 +1,8 @@
+"use client";
+
+import { useState, FormEvent } from "react";
 import Image from "next/image";
 import Button from "@/components/Button";
-
-export const metadata = {
-  title: "Recruitment Services for Employers in India | TeamMates",
-  description:
-    "Hire skilled professionals with TeamMates HR Solutions. Explore recruitment, staffing, talent acquisition and workforce solutions for businesses across India.",
-};
 
 const services = [
   {
@@ -131,16 +128,110 @@ const faqs = [
 ];
 
 export default function ForEmployersPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | "";
+    message: string;
+  }>({
+    type: "",
+    message: "",
+  });
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setStatus({
+      type: "",
+      message: "",
+    });
+
+    const form = event.currentTarget;
+
+    const formData = new FormData(form);
+
+    const company = String(formData.get("companyName") || "").trim();
+    const contactName = String(formData.get("contactName") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const phone = String(formData.get("phone") || "").trim();
+    const jobTitle = String(formData.get("jobTitle") || "").trim();
+    const requirementDetails = String(
+      formData.get("message") || ""
+    ).trim();
+
+    if (
+      !company ||
+      !contactName ||
+      !email ||
+      !phone ||
+      !jobTitle ||
+      !requirementDetails
+    ) {
+      setStatus({
+        type: "error",
+        message: "Please fill in all required fields.",
+      });
+
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/hiring-requirement", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          company,
+          contactName,
+          email,
+          phone,
+          jobTitle,
+          requirementDetails,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(
+          data.message || "Unable to submit your hiring requirement."
+        );
+      }
+
+      setStatus({
+        type: "success",
+        message:
+          "Your hiring requirement has been submitted successfully. Our team will get in touch with you.",
+      });
+
+      form.reset();
+    } catch (error) {
+      console.error("Hiring requirement submission error:", error);
+
+      setStatus({
+        type: "error",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Something went wrong. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <main className="bg-[#FDFDFD] !text-[#545A5B]">
-
       {/* =========================================================
           01. EMPLOYER HERO
       ========================================================= */}
       <section className="bg-[#FFFFFF]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
           <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
-
             <div className="lg:col-span-6">
               <p className="mb-5 text-[12px] font-semibold uppercase tracking-[0.18em] !text-[#6D7E5A]">
                 For Employers
@@ -187,7 +278,6 @@ export default function ForEmployersPage() {
                 />
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -197,26 +287,24 @@ export default function ForEmployersPage() {
       ========================================================= */}
       <section className="bg-[#C1C3AC]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-
           <div className="max-w-[760px]">
             <p className="mb-4 text-[12px] font-semibold uppercase tracking-[0.18em] !text-[#6D7E5A]">
               Our Approach
             </p>
 
-            <h2 className="!text-white text-[38px] font-extrabold leading-[1.02] tracking-[-0.04em] sm:text-[50px] lg:text-[60px]">
+            <h2 className="text-[38px] font-extrabold leading-[1.02] tracking-[-0.04em] !text-white sm:text-[50px] lg:text-[60px]">
               Hiring that starts with{" "}
               <span className="!text-[#6D7E5A]">understanding.</span>
             </h2>
 
-            <p className="mt-6 max-w-[700px] !text-white text-[16px] leading-7 sm:text-[18px]">
-              We take the time to understand your workforce requirements,
-              role expectations and the skills needed before connecting you
-              with relevant professionals.
+            <p className="mt-6 max-w-[700px] text-[16px] leading-7 !text-white sm:text-[18px]">
+              We take the time to understand your workforce requirements, role
+              expectations and the skills needed before connecting you with
+              relevant professionals.
             </p>
           </div>
 
           <div className="mt-12 grid gap-5 md:grid-cols-2">
-
             {[
               {
                 number: "01",
@@ -247,20 +335,19 @@ export default function ForEmployersPage() {
                 key={item.number}
                 className="rounded-[16px] border border-[#DFE2DF] bg-white p-7 sm:p-8"
               >
-                <span className="!text-[#6D7E5A] text-[13px] font-bold tracking-[0.08em]">
+                <span className="text-[13px] font-bold tracking-[0.08em] !text-[#6D7E5A]">
                   {item.number}
                 </span>
 
-                <h3 className="mt-5 !text-[#545A5B] text-[23px] font-bold tracking-[-0.025em]">
+                <h3 className="mt-5 text-[23px] font-bold tracking-[-0.025em] !text-[#545A5B]">
                   {item.title}
                 </h3>
 
-                <p className="mt-3 !text-[#6F746F] text-[15px] leading-7">
+                <p className="mt-3 text-[15px] leading-7 !text-[#6F746F]">
                   {item.description}
                 </p>
               </div>
             ))}
-
           </div>
         </div>
       </section>
@@ -273,22 +360,19 @@ export default function ForEmployersPage() {
         className="bg-[#FFFFFF]"
       >
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-
           <div className="w-full rounded-[16px] bg-[#C1C3AC] p-6 sm:p-8 lg:p-12">
-
             <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
-
               <div className="lg:col-span-5">
                 <p className="mb-4 text-[12px] font-semibold uppercase tracking-[0.18em] !text-[#6D7E5A]">
                   Hiring Requirement
                 </p>
 
-                <h2 className="!text-white text-[38px] font-extrabold leading-[1.03] tracking-[-0.04em] sm:text-[50px]">
+                <h2 className="text-[38px] font-extrabold leading-[1.03] tracking-[-0.04em] !text-white sm:text-[50px]">
                   Tell us what you{" "}
                   <span className="!text-[#6D7E5A]">need.</span>
                 </h2>
 
-                <p className="mt-6 max-w-[500px] !text-white text-[16px] leading-7">
+                <p className="mt-6 max-w-[500px] text-[16px] leading-7 !text-white">
                   Share your hiring requirement with TeamMates HR Solutions
                   and our team will understand your workforce needs and
                   relevant candidate profile.
@@ -296,14 +380,15 @@ export default function ForEmployersPage() {
               </div>
 
               <div className="lg:col-span-7">
-                <form className="rounded-[16px] bg-white p-6 sm:p-8">
-
+                <form
+                  onSubmit={handleSubmit}
+                  className="rounded-[16px] bg-white p-6 sm:p-8"
+                >
                   <div className="grid gap-5 sm:grid-cols-2">
-
                     <div>
                       <label
                         htmlFor="company-name"
-                        className="mb-2 block !text-[#545A5B] text-[13px] font-semibold"
+                        className="mb-2 block text-[13px] font-semibold !text-[#545A5B]"
                       >
                         Company Name
                       </label>
@@ -312,14 +397,15 @@ export default function ForEmployersPage() {
                         id="company-name"
                         name="companyName"
                         type="text"
-                        className="h-12 w-full rounded-[10px] border border-[#DFE2DF] bg-white px-4 !text-[#545A5B] text-[14px] outline-none transition focus:border-[#6D7E5A]"
+                        required
+                        className="h-12 w-full rounded-[10px] border border-[#DFE2DF] bg-white px-4 text-[14px] !text-[#545A5B] outline-none transition focus:border-[#6D7E5A]"
                       />
                     </div>
 
                     <div>
                       <label
                         htmlFor="contact-name"
-                        className="mb-2 block !text-[#545A5B] text-[13px] font-semibold"
+                        className="mb-2 block text-[13px] font-semibold !text-[#545A5B]"
                       >
                         Contact Name
                       </label>
@@ -328,14 +414,15 @@ export default function ForEmployersPage() {
                         id="contact-name"
                         name="contactName"
                         type="text"
-                        className="h-12 w-full rounded-[10px] border border-[#DFE2DF] bg-white px-4 !text-[#545A5B] text-[14px] outline-none transition focus:border-[#6D7E5A]"
+                        required
+                        className="h-12 w-full rounded-[10px] border border-[#DFE2DF] bg-white px-4 text-[14px] !text-[#545A5B] outline-none transition focus:border-[#6D7E5A]"
                       />
                     </div>
 
                     <div>
                       <label
                         htmlFor="email"
-                        className="mb-2 block !text-[#545A5B] text-[13px] font-semibold"
+                        className="mb-2 block text-[13px] font-semibold !text-[#545A5B]"
                       >
                         Email
                       </label>
@@ -344,14 +431,15 @@ export default function ForEmployersPage() {
                         id="email"
                         name="email"
                         type="email"
-                        className="h-12 w-full rounded-[10px] border border-[#DFE2DF] bg-white px-4 !text-[#545A5B] text-[14px] outline-none transition focus:border-[#6D7E5A]"
+                        required
+                        className="h-12 w-full rounded-[10px] border border-[#DFE2DF] bg-white px-4 text-[14px] !text-[#545A5B] outline-none transition focus:border-[#6D7E5A]"
                       />
                     </div>
 
                     <div>
                       <label
                         htmlFor="phone"
-                        className="mb-2 block !text-[#545A5B] text-[13px] font-semibold"
+                        className="mb-2 block text-[13px] font-semibold !text-[#545A5B]"
                       >
                         Phone
                       </label>
@@ -360,14 +448,15 @@ export default function ForEmployersPage() {
                         id="phone"
                         name="phone"
                         type="tel"
-                        className="h-12 w-full rounded-[10px] border border-[#DFE2DF] bg-white px-4 !text-[#545A5B] text-[14px] outline-none transition focus:border-[#6D7E5A]"
+                        required
+                        className="h-12 w-full rounded-[10px] border border-[#DFE2DF] bg-white px-4 text-[14px] !text-[#545A5B] outline-none transition focus:border-[#6D7E5A]"
                       />
                     </div>
 
                     <div className="sm:col-span-2">
                       <label
                         htmlFor="job-title"
-                        className="mb-2 block !text-[#545A5B] text-[13px] font-semibold"
+                        className="mb-2 block text-[13px] font-semibold !text-[#545A5B]"
                       >
                         Job Title / Requirement
                       </label>
@@ -376,14 +465,15 @@ export default function ForEmployersPage() {
                         id="job-title"
                         name="jobTitle"
                         type="text"
-                        className="h-12 w-full rounded-[10px] border border-[#DFE2DF] bg-white px-4 !text-[#545A5B] text-[14px] outline-none transition focus:border-[#6D7E5A]"
+                        required
+                        className="h-12 w-full rounded-[10px] border border-[#DFE2DF] bg-white px-4 text-[14px] !text-[#545A5B] outline-none transition focus:border-[#6D7E5A]"
                       />
                     </div>
 
                     <div className="sm:col-span-2">
                       <label
                         htmlFor="message"
-                        className="mb-2 block !text-[#545A5B] text-[13px] font-semibold"
+                        className="mb-2 block text-[13px] font-semibold !text-[#545A5B]"
                       >
                         Requirement Details
                       </label>
@@ -392,26 +482,43 @@ export default function ForEmployersPage() {
                         id="message"
                         name="message"
                         rows={5}
-                        className="w-full resize-none rounded-[10px] border border-[#DFE2DF] bg-white px-4 py-3 !text-[#545A5B] text-[14px] outline-none transition focus:border-[#6D7E5A]"
+                        required
+                        className="w-full resize-none rounded-[10px] border border-[#DFE2DF] bg-white px-4 py-3 text-[14px] !text-[#545A5B] outline-none transition focus:border-[#6D7E5A]"
                       />
                     </div>
-
                   </div>
+
+                  {status.message && (
+                    <div
+                      role="status"
+                      aria-live="polite"
+                      className={`mt-5 rounded-[10px] px-4 py-3 text-[14px] leading-6 ${
+                        status.type === "success"
+                          ? "bg-[#EEF0EE] !text-[#38472A]"
+                          : "bg-[#F5EAEA] !text-[#8A3D3D]"
+                      }`}
+                    >
+                      {status.message}
+                    </div>
+                  )}
 
                   <button
                     type="submit"
-                    className="mt-6 inline-flex min-h-12 items-center justify-center rounded-full bg-[#6D7E5A] px-7 py-3 text-[13px] font-semibold !text-white transition hover:bg-[#6D7E5A]"
+                    disabled={isSubmitting}
+                    className="mt-6 inline-flex min-h-12 items-center justify-center rounded-full bg-[#6D7E5A] px-7 py-3 text-[13px] font-semibold !text-white transition hover:bg-[#6D7E5A] disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    Submit Hiring Requirement
-                    <span className="ml-3 !text-white">→</span>
-                  </button>
+                    {isSubmitting
+                      ? "Submitting..."
+                      : "Submit Hiring Requirement"}
 
+                    {!isSubmitting && (
+                      <span className="ml-3 !text-white">→</span>
+                    )}
+                  </button>
                 </form>
               </div>
-
             </div>
           </div>
-
         </div>
       </section>
 
@@ -420,44 +527,41 @@ export default function ForEmployersPage() {
       ========================================================= */}
       <section className="bg-[#C1C3AC]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-
           <div className="max-w-[760px]">
             <p className="mb-4 text-[12px] font-semibold uppercase tracking-[0.18em] !text-[#6D7E5A]">
-              Recruitment & Workforce Services
+              Recruitment &amp; Workforce Services
             </p>
 
-            <h2 className="!text-white text-[38px] font-extrabold leading-[1.03] tracking-[-0.04em] sm:text-[50px] lg:text-[60px]">
+            <h2 className="text-[38px] font-extrabold leading-[1.03] tracking-[-0.04em] !text-white sm:text-[50px] lg:text-[60px]">
               Solutions built around your{" "}
               <span className="!text-[#6D7E5A]">workforce.</span>
             </h2>
 
-            <p className="mt-6 max-w-[700px] !text-white text-[16px] leading-7 sm:text-[18px]">
+            <p className="mt-6 max-w-[700px] text-[16px] leading-7 !text-white sm:text-[18px]">
               Explore recruitment and workforce services designed to support
               different hiring requirements.
             </p>
           </div>
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">
-
             {services.map((service) => (
               <div
                 key={service.number}
                 className="rounded-[16px] border border-[#DFE2DF] bg-white p-7 sm:p-8"
               >
-                <span className="!text-[#6D7E5A] text-[13px] font-bold tracking-[0.08em]">
+                <span className="text-[13px] font-bold tracking-[0.08em] !text-[#6D7E5A]">
                   {service.number}
                 </span>
 
-                <h3 className="mt-5 !text-[#545A5B] text-[24px] font-bold tracking-[-0.025em]">
+                <h3 className="mt-5 text-[24px] font-bold tracking-[-0.025em] !text-[#545A5B]">
                   {service.title}
                 </h3>
 
-                <p className="mt-4 !text-[#6F746F] text-[15px] leading-7">
+                <p className="mt-4 text-[15px] leading-7 !text-[#6F746F]">
                   {service.description}
                 </p>
               </div>
             ))}
-
           </div>
         </div>
       </section>
@@ -467,44 +571,39 @@ export default function ForEmployersPage() {
       ========================================================= */}
       <section className="bg-[#FFFFFF]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-
           <div className="max-w-[760px]">
             <p className="mb-4 text-[12px] font-semibold uppercase tracking-[0.18em] !text-[#6D7E5A]">
               Industries
             </p>
 
-            <h2 className="!text-[#545A5B] text-[38px] font-extrabold leading-[1.03] tracking-[-0.04em] sm:text-[50px] lg:text-[60px]">
+            <h2 className="text-[38px] font-extrabold leading-[1.03] tracking-[-0.04em] !text-[#545A5B] sm:text-[50px] lg:text-[60px]">
               Recruitment across{" "}
               <span className="!text-[#6D7E5A]">industries.</span>
             </h2>
 
-            <p className="mt-6 max-w-[700px] !text-[#6F746F] text-[16px] leading-7 sm:text-[18px]">
+            <p className="mt-6 max-w-[700px] text-[16px] leading-7 !text-[#6F746F] sm:text-[18px]">
               Our recruitment approach considers the different workforce
               requirements and hiring realities of multiple industries.
             </p>
           </div>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-
             {industries.map((industry, index) => (
               <div
                 key={industry}
                 className="rounded-[16px] border border-[#DFE2DF] bg-white p-6 transition-transform duration-300 hover:-translate-y-1 sm:p-7"
               >
                 <div className="flex items-start gap-4">
-
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#6D7E5A] text-[12px] font-bold !text-white">
                     {String(index + 1).padStart(2, "0")}
                   </span>
 
-                  <h3 className="pt-2 !text-[#545A5B] text-[18px] font-bold tracking-[-0.02em]">
+                  <h3 className="pt-2 text-[18px] font-bold tracking-[-0.02em] !text-[#545A5B]">
                     {industry}
                   </h3>
-
                 </div>
               </div>
             ))}
-
           </div>
         </div>
       </section>
@@ -514,18 +613,17 @@ export default function ForEmployersPage() {
       ========================================================= */}
       <section className="bg-[#C1C3AC]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-
           <div className="max-w-[760px]">
             <p className="mb-4 text-[12px] font-semibold uppercase tracking-[0.18em] !text-[#6D7E5A]">
               Why TeamMates
             </p>
 
-            <h2 className="!text-white text-[38px] font-extrabold leading-[1.03] tracking-[-0.04em] sm:text-[50px] lg:text-[60px]">
+            <h2 className="text-[38px] font-extrabold leading-[1.03] tracking-[-0.04em] !text-white sm:text-[50px] lg:text-[60px]">
               Recruitment focused on{" "}
               <span className="!text-[#6D7E5A]">relevance.</span>
             </h2>
 
-            <p className="mt-6 max-w-[700px] !text-white text-[16px] leading-7 sm:text-[18px]">
+            <p className="mt-6 max-w-[700px] text-[16px] leading-7 !text-white sm:text-[18px]">
               We focus on understanding the requirement, identifying relevant
               talent and maintaining clear communication throughout the
               recruitment journey.
@@ -533,26 +631,24 @@ export default function ForEmployersPage() {
           </div>
 
           <div className="mt-12 grid gap-5 md:grid-cols-2">
-
             {reasons.map((reason) => (
               <div
                 key={reason.number}
                 className="rounded-[16px] border border-[#DFE2DF] bg-white p-7 sm:p-8"
               >
-                <span className="!text-[#6D7E5A] text-[13px] font-bold tracking-[0.08em]">
+                <span className="text-[13px] font-bold tracking-[0.08em] !text-[#6D7E5A]">
                   {reason.number}
                 </span>
 
-                <h3 className="mt-5 !text-[#545A5B] text-[23px] font-bold tracking-[-0.025em]">
+                <h3 className="mt-5 text-[23px] font-bold tracking-[-0.025em] !text-[#545A5B]">
                   {reason.title}
                 </h3>
 
-                <p className="mt-3 !text-[#6F746F] text-[15px] leading-7">
+                <p className="mt-3 text-[15px] leading-7 !text-[#6F746F]">
                   {reason.description}
                 </p>
               </div>
             ))}
-
           </div>
         </div>
       </section>
@@ -562,18 +658,17 @@ export default function ForEmployersPage() {
       ========================================================= */}
       <section className="bg-[#FFFFFF]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-
           <div className="max-w-[760px]">
             <p className="mb-4 text-[12px] font-semibold uppercase tracking-[0.18em] !text-[#6D7E5A]">
               How We Work
             </p>
 
-            <h2 className="!text-[#545A5B] text-[38px] font-extrabold leading-[1.03] tracking-[-0.04em] sm:text-[50px] lg:text-[60px]">
+            <h2 className="text-[38px] font-extrabold leading-[1.03] tracking-[-0.04em] !text-[#545A5B] sm:text-[50px] lg:text-[60px]">
               A clear recruitment{" "}
               <span className="!text-[#6D7E5A]">process.</span>
             </h2>
 
-            <p className="mt-6 max-w-[700px] !text-[#6F746F] text-[16px] leading-7 sm:text-[18px]">
+            <p className="mt-6 max-w-[700px] text-[16px] leading-7 !text-[#6F746F] sm:text-[18px]">
               From understanding your requirement to connecting relevant
               professionals, we keep the recruitment process clear and
               focused.
@@ -581,26 +676,24 @@ export default function ForEmployersPage() {
           </div>
 
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-
             {process.map((item) => (
               <div
                 key={item.number}
                 className="rounded-[16px] border border-[#DFE2DF] bg-white p-7 sm:p-8"
               >
-                <span className="!text-[#6D7E5A] text-[13px] font-bold tracking-[0.08em]">
+                <span className="text-[13px] font-bold tracking-[0.08em] !text-[#6D7E5A]">
                   {item.number}
                 </span>
 
-                <h3 className="mt-5 !text-[#545A5B] text-[23px] font-bold tracking-[-0.025em]">
+                <h3 className="mt-5 text-[23px] font-bold tracking-[-0.025em] !text-[#545A5B]">
                   {item.title}
                 </h3>
 
-                <p className="mt-3 !text-[#6F746F] text-[15px] leading-7">
+                <p className="mt-3 text-[15px] leading-7 !text-[#6F746F]">
                   {item.description}
                 </p>
               </div>
             ))}
-
           </div>
         </div>
       </section>
@@ -610,54 +703,44 @@ export default function ForEmployersPage() {
       ========================================================= */}
       <section className="bg-[#C1C3AC]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-
           <div className="max-w-[760px]">
-
             <p className="mb-4 text-[12px] font-semibold uppercase tracking-[0.18em] !text-[#6D7E5A]">
               FAQ
             </p>
 
-            <h2 className="!text-white text-[38px] font-extrabold leading-[1.03] tracking-[-0.04em] sm:text-[50px] lg:text-[60px]">
-              Questions from{" "}
-              <span className="!text-white">employers.</span>
+            <h2 className="text-[38px] font-extrabold leading-[1.03] tracking-[-0.04em] !text-white sm:text-[50px] lg:text-[60px]">
+              Questions from <span className="!text-white">employers.</span>
             </h2>
 
-            <p className="mt-6 max-w-[700px] !text-white text-[16px] leading-7 sm:text-[18px]">
+            <p className="mt-6 max-w-[700px] text-[16px] leading-7 !text-white sm:text-[18px]">
               Find answers to common questions about our recruitment and
               workforce services.
             </p>
-
           </div>
 
           <div className="mt-12 space-y-4">
-
             {faqs.map((faq) => (
               <details
                 key={faq.question}
                 className="group rounded-[16px] border border-[#DFE2DF] bg-white"
               >
-
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-6 p-6 sm:p-7">
-
-                  <span className="!text-[#545A5B] text-[17px] font-bold tracking-[-0.015em] sm:text-[19px]">
+                  <span className="text-[17px] font-bold tracking-[-0.015em] !text-[#545A5B] sm:text-[19px]">
                     {faq.question}
                   </span>
 
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#6D7E5A] !text-[#6D7E5A] text-[22px] font-normal leading-none transition-transform duration-300 group-open:rotate-45">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#6D7E5A] text-[22px] font-normal leading-none !text-[#6D7E5A] transition-transform duration-300 group-open:rotate-45">
                     +
                   </span>
-
                 </summary>
 
                 <div className="px-6 pb-6 sm:px-7 sm:pb-7">
-                  <p className="max-w-[900px] !text-[#6F746F] text-[15px] leading-7">
+                  <p className="max-w-[900px] text-[15px] leading-7 !text-[#6F746F]">
                     {faq.answer}
                   </p>
                 </div>
-
               </details>
             ))}
-
           </div>
         </div>
       </section>
@@ -667,25 +750,22 @@ export default function ForEmployersPage() {
       ========================================================= */}
       <section className="bg-[#FFFFFF]">
         <div className="mx-auto max-w-[1280px] px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-
           <div className="w-full rounded-[16px] bg-[#C1C3AC] px-6 py-14 text-center sm:px-10 sm:py-16 lg:px-16 lg:py-20">
-
-            <p className="!text-[#6D7E5A] text-[12px] font-semibold uppercase tracking-[0.18em]">
+            <p className="text-[12px] font-semibold uppercase tracking-[0.18em] !text-[#6D7E5A]">
               Let’s Build Your Team
             </p>
 
-            <h2 className="mx-auto mt-5 max-w-[850px] !text-white text-[38px] font-extrabold leading-[1.03] tracking-[-0.04em] sm:text-[50px] lg:text-[62px]">
+            <h2 className="mx-auto mt-5 max-w-[850px] text-[38px] font-extrabold leading-[1.03] tracking-[-0.04em] !text-white sm:text-[50px] lg:text-[62px]">
               Ready to find the{" "}
               <span className="!text-white">right talent?</span>
             </h2>
 
-            <p className="mx-auto mt-6 max-w-[720px] !text-white text-[16px] leading-7 sm:text-[18px]">
+            <p className="mx-auto mt-6 max-w-[720px] text-[16px] leading-7 !text-white sm:text-[18px]">
               Share your hiring requirement with TeamMates HR Solutions and
               take the next step toward building your team.
             </p>
 
             <div className="mt-9 flex flex-wrap justify-center gap-3">
-
               <Button
                 href="#hiring-requirement"
                 variant="primary"
@@ -701,13 +781,10 @@ export default function ForEmployersPage() {
               >
                 Contact TeamMates
               </Button>
-
             </div>
-
           </div>
         </div>
       </section>
-
     </main>
   );
 }
