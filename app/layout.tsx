@@ -69,27 +69,36 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://teammateshrsolutions.com",
     siteName: "TeamMates HR Solutions",
+
     title:
       "TeamMates HR Solutions | Recruitment & Staffing Agency in India",
+
     description:
       "Recruitment, staffing, talent acquisition and workforce solutions for businesses across India.",
+
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "https://teammateshrsolutions.com/images/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "TeamMates HR Solutions - Recruitment and Staffing",
+        type: "image/jpeg",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
+
     title:
       "TeamMates HR Solutions | Recruitment & Staffing Agency in India",
+
     description:
       "Recruitment, staffing, talent acquisition and workforce solutions for businesses across India.",
-    images: ["/images/og-image.jpg"],
+
+    images: [
+      "https://teammateshrsolutions.com/images/og-image.jpg",
+    ],
   },
 
   icons: {
