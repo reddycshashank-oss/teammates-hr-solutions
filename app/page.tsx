@@ -2,12 +2,32 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "@/components/Button";
 
 export default function Home() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [soundOn, setSoundOn] = useState(false);
+  const [heroVideo, setHeroVideo] = useState<string | null>(null);
+
+  useEffect(() => {
+    const mobileQuery = window.matchMedia("(max-width: 767px)");
+
+    const updateHeroVideo = () => {
+      setHeroVideo(
+        mobileQuery.matches
+          ? "/videos/teammates-new-hero-mobile.mp4"
+          : "/videos/teammates-new-hero.mp4"
+      );
+    };
+
+    updateHeroVideo();
+    mobileQuery.addEventListener("change", updateHeroVideo);
+
+    return () => {
+      mobileQuery.removeEventListener("change", updateHeroVideo);
+    };
+  }, []);
 
   const toggleSound = async () => {
     const video = videoRef.current;
@@ -44,6 +64,8 @@ export default function Home() {
 
   <video
     ref={videoRef}
+    key={heroVideo ?? "hero-video"}
+    src={heroVideo ?? undefined}
     autoPlay
     muted
     loop
@@ -51,18 +73,7 @@ export default function Home() {
     preload="metadata"
     className="absolute inset-0 h-full w-full object-cover"
   >
-    {/* Mobile 9:16 Video */}
-    <source
-      src="/videos/teammateshr-new-hero-mobile.mp4"
-      type="video/mp4"
-      media="(max-width: 767px)"
-    />
-
-    {/* Desktop Video */}
-    <source
-      src="/videos/teammateshr-new-hero.mp4"
-      type="video/mp4"
-    />
+    Your browser does not support the video element.
   </video>
 
   {/* VIDEO OVERLAY */}
