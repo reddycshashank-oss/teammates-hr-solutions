@@ -76,18 +76,6 @@ export default function Home() {
     Your browser does not support the video element.
   </video>
 
-  {/* VIDEO OVERLAY */}
-
-  <div
-    aria-hidden="true"
-    className="absolute inset-0 bg-[#111111]/50"
-  />
-
-  <div
-    aria-hidden="true"
-    className="absolute inset-0 bg-[#38472A]/15"
-  />
-
   {/* =====================================================
       BOTTOM CTA BAR
   ===================================================== */}
