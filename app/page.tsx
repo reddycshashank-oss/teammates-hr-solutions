@@ -53,7 +53,7 @@ export default function Home() {
   >
     {/* Mobile 9:16 Video */}
     <source
-      src="/videos/teammateshr-hero-mobile.mp4"
+      src="/videos/teammateshr-new-hero-mobile.mp4"
       type="video/mp4"
       media="(max-width: 767px)"
     />
