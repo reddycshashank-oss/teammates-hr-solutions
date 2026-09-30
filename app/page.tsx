@@ -60,7 +60,7 @@ export default function Home() {
 
     {/* Desktop Video */}
     <source
-      src="/videos/teammateshr-hero.mp4"
+      src="/videos/teammateshr-new-hero.mp4"
       type="video/mp4"
     />
   </video>
